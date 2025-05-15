@@ -1,4 +1,4 @@
-package Modulo_Comercio.Dominio;
+package Modulo_Transferencias.Dominio;
 
 public class Comercio {
     private int rut;

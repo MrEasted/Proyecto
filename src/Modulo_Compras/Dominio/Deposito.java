@@ -1,4 +1,4 @@
-package Modulo_Comercio.Dominio;
+package Modulo_Compras.Dominio;
 
 public class Deposito {
     private Date fecha;
