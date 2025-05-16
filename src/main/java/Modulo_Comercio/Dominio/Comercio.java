@@ -12,6 +12,9 @@ public class Comercio {
         this.cuentabanco = cuentabanco;
     }
 
+    public Comercio() {
+    }
+
     public int getRut() {
         return rut;
     }
