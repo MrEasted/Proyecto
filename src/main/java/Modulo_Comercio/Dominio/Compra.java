@@ -1,47 +1,36 @@
 package Modulo_Comercio.Dominio;
 
+import java.time.LocalDate;
+
 public class Compra {
-    private int idCompra;
-    private int importe;
-    private Date fecha;
-    private String cantidades;
+    private int id;
+    private float importe;
+    private LocalDate fecha;
+    private String descripcion;
+    private Tarjeta tarjeta;
+    private Pos pos;
 
-    public Compra(int idCompra, int importe, Date fecha, String cantidades) {
-        this.idCompra = idCompra;
+    public Compra(int id, int importe, LocalDate fecha, String descripcion, Tarjeta tarjeta, Pos pos) {
+        this.id = id;
         this.importe = importe;
         this.fecha = fecha;
-        this.cantidades = cantidades;
+        this.descripcion = descripcion;
+        this.tarjeta = tarjeta;
+        this.pos = pos;
     }
 
-    public int getIdCompra() {
-        return idCompra;
-    }
+    public Compra() {}
 
-    public void setIdCompra(int idCompra) {
-        this.idCompra = idCompra;
-    }
-
-    public int getImporte() {
-        return importe;
-    }
-
-    public void setImporte(int importe) {
-        this.importe = importe;
-    }
-
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    public String getCantidades() {
-        return cantidades;
-    }
-
-    public void setCantidades(String cantidades) {
-        this.cantidades = cantidades;
-    }
+    public int getId() {return id;}
+    public void setId(int id) {this.id = id;}
+    public float getImporte() {return importe;}
+    public void setImporte(float importe) {this.importe = importe;}
+    public LocalDate getFecha() {return fecha;}
+    public void setFecha(LocalDate fecha) {this.fecha = fecha;}
+    public String getDescripcion() {return descripcion;}
+    public void setDescripcion(String descripcion) {this.descripcion = descripcion;}
+    public Tarjeta getTarjeta() {return tarjeta;}
+    public void setTarjeta(Tarjeta tarjeta) {this.tarjeta = tarjeta;}
+    public Pos getPos() {return pos;}
+    public void setPos(Pos pos) {this.pos = pos;}
 }

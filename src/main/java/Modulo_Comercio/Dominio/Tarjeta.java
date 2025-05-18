@@ -1,41 +1,26 @@
 package Modulo_Comercio.Dominio;
 
-public class Tarjeta {
+import java.time.LocalDate;
 
+public class Tarjeta {
     private int numero;
     private String marca;
-    private Date localDate;
+    private LocalDate vencimiento;
 
-
-    public Tarjeta(int numero, Date localDate, String marca) {
+    public Tarjeta(int numero, String marca, LocalDate vencimiento) {
         this.numero = numero;
-        this.localDate = localDate;
         this.marca = marca;
+        this.vencimiento = vencimiento;
     }
 
-    public int getNumero() {
-        return numero;
-    }
+    public Tarjeta() {}
 
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
-
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
-    public Date getLocalDate() {
-        return localDate;
-    }
-
-    public void setLocalDate(Date localDate) {
-        this.localDate = localDate;
-    }
+    public int getNumero() { return numero; }
+    public void setNumero(int numero) { this.numero = numero; }
+    public String getMarca() { return marca; }
+    public void setMarca(String marca) { this.marca = marca; }
+    public LocalDate getVencimiento() { return vencimiento; }
+    public void setVencimiento(LocalDate vencimiento) { this.vencimiento = vencimiento; }
 }
 
 
