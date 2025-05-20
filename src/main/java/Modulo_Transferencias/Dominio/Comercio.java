@@ -1,40 +1,35 @@
 package Modulo_Transferencias.Dominio;
 
+import lombok.Getter;
+import java.util.List;
+
 public class Comercio {
     private int rut;
-    private Compra micompra;
-    private CuentaBancoComercio cuentabanco;
+    private List<Compra> compras;
+    private CuentaBancoComercio cuenta;
+    private List<Pos> pos;
 
-
-    public Comercio(int rut, Compra micompra, CuentaBancoComercio cuentabanco) {
+    public Comercio(int rut, List<Compra> compras, CuentaBancoComercio cuenta, List<Pos> pos) {
         this.rut = rut;
-        this.micompra = micompra;
-        this.cuentabanco = cuentabanco;
+        this.compras = compras;
+        this.cuenta = cuenta;
+        this.pos = pos;
     }
 
-    public int getRut() {
-        return rut;
-    }
-
-    public Compra getMicompra() {
-        return micompra;
-    }
-
-    public CuentaBancoComercio getCuentabanco() {
-        return cuentabanco;
-    }
+    public  Comercio() {}
 
     public void setRut(int rut) {
         this.rut = rut;
     }
 
-    public void setMicompra(Compra micompra) {
-        this.micompra = micompra;
+    public void setCompras(List<Compra> compras) { this.compras = compras; }
+
+    public void setCuenta(CuentaBancoComercio cuenta) {
+        this.cuenta = cuenta;
     }
 
-    public void setCuentabanco(CuentaBancoComercio cuentabanco) {
-        this.cuentabanco = cuentabanco;
-    }
+    public void setPos(List<Pos> pos) { this.pos = pos; }
+
 }
 
 
