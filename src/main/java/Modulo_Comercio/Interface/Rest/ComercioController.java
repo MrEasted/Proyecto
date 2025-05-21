@@ -1,8 +1,10 @@
 package Modulo_Comercio.Interface.Rest;
 
 import Modulo_Comercio.Aplicacion.IAltaComercioServicio;
+import Modulo_Comercio.Aplicacion.IRealizarReclamo;
 import Modulo_Comercio.Dominio.*;
 import Modulo_Comercio.Interface.DTO.AltaComercioRequest;
+import Modulo_Comercio.Interface.DTO.ReclamoDTO;
 import jakarta.inject.Inject;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.ws.rs.*;
@@ -20,6 +22,8 @@ public class ComercioController {
 
     @Inject
     private IAltaComercioServicio servicioComercio;
+    @Inject
+    private IRealizarReclamo realizarReclamo;
 
     public void cargarDatos() {
         // Crear algunas instancias de los objetos
@@ -123,5 +127,49 @@ public class ComercioController {
     }
 
     //Llamar GET http://localhost:8080/Proyecto/api/comercios/ping
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @POST
+    @Path("/reclamo")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response crearReclamo(ReclamoDTO dto) {
+        try {
+            System.out.println("Reclamo recibido: " + dto.getReclamo());
+            System.out.println("RUT recibido: " + dto.getRut());
+
+            realizarReclamo.realizarReclamo(dto.getReclamo(), dto.getRut());
+            return Response.ok("Reclamo registrado exitosamente").build();
+        } catch (RuntimeException e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity("Error: " + e.getMessage())
+                    .build();
+        }
+    }
+
 
 }

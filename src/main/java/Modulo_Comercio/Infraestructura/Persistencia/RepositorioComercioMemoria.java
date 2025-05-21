@@ -1,17 +1,23 @@
 package Modulo_Comercio.Infraestructura.Persistencia;
 
 import Modulo_Comercio.Dominio.Comercio;
+import Modulo_Comercio.Dominio.Reclamos;
 import Modulo_Comercio.Dominio.Repositorio.IRepositorioComercio;
 import jakarta.enterprise.context.ApplicationScoped;
 
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @ApplicationScoped
 public class RepositorioComercioMemoria implements IRepositorioComercio {
 
     private final Map<Integer, Comercio> comercios = new HashMap<>();
+
+
 
     @Override
     public void guardar(Comercio comercio) {
@@ -21,6 +27,23 @@ public class RepositorioComercioMemoria implements IRepositorioComercio {
     @Override
     public boolean existe(int rut) {
         return comercios.containsKey(rut);
+    }
+
+
+    @Override
+    public void realizarReclamo(String reclamo, int comercio) {
+        Comercio co = comercios.get(comercio);
+        Reclamos recla = new Reclamos();
+        recla.setReclamo(reclamo);
+        recla.setComercio(co);
+        LocalDate fecha = LocalDate.now();
+        recla.setFecha(fecha);
+
+
+        if (co.getReclamos() == null) {
+            co.setReclamos(new ArrayList<>());
+        }
+        co.getReclamos().add(recla);
     }
 
 
