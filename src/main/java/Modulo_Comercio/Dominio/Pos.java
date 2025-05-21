@@ -14,4 +14,5 @@ public class Pos {
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     public boolean isActivo() { return activo; }
+    public void cambiarEstado(boolean activo) { this.activo = activo; }
 }
