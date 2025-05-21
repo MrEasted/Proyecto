@@ -17,11 +17,11 @@ public class AltaComercioServicio implements IAltaComercioServicio {
     IRepositorioComercio repositorio;
 
     @Override
-    public void altaComercio(int rut, List<Compra> compras, CuentaBancoComercio cuenta, List<Pos> pos) {
+    public void altaComercio(int rut, List<Compra> compras, CuentaBancoComercio cuenta, List<Pos> pos, String password) {
         if (repositorio.existe(rut)) {
             throw new RuntimeException("El comercio ya existe");
         }
-        Comercio comercio = new Comercio(rut, compras, cuenta, pos);
+        Comercio comercio = new Comercio(rut, compras, cuenta, pos, password);
         repositorio.guardar(comercio);
     }
 }

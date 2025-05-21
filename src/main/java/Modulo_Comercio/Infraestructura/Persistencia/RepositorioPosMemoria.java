@@ -20,4 +20,9 @@ public class RepositorioPosMemoria implements IRepositorioPos {
     public boolean existe(int id) {
         return listaPos.containsKey(id);
     }
+
+    @Override
+    public Pos obtenerPosPorId(int id) {
+        return listaPos.get(id);
+    }
 }
