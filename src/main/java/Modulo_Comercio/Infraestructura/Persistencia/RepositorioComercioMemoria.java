@@ -1,7 +1,11 @@
 package Modulo_Comercio.Infraestructura.Persistencia;
 
 import Modulo_Comercio.Dominio.Comercio;
+
 import Modulo_Comercio.Dominio.Reclamos;
+
+import Modulo_Comercio.Dominio.CuentaBancoComercio;
+
 import Modulo_Comercio.Dominio.Repositorio.IRepositorioComercio;
 import jakarta.enterprise.context.ApplicationScoped;
 
@@ -30,6 +34,7 @@ public class RepositorioComercioMemoria implements IRepositorioComercio {
     }
 
 
+
     @Override
     public void realizarReclamo(String reclamo, int comercio) {
         Comercio co = comercios.get(comercio);
@@ -46,5 +51,11 @@ public class RepositorioComercioMemoria implements IRepositorioComercio {
         co.getReclamos().add(recla);
     }
 
+
+
+    @Override
+    public Comercio obtener(int rut) {
+        return comercios.get(rut);
+    }
 
 }

@@ -1,19 +1,21 @@
 package Modulo_Transferencias.Dominio;
 
+import java.time.LocalDate;
+
 public class Deposito {
-    private Date fecha;
+    private LocalDate fecha;
     private float importe;
 
-    public Deposito(Date fecha, float importe) {
+    public Deposito(LocalDate fecha, float importe) {
         this.fecha = fecha;
         this.importe = importe;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
