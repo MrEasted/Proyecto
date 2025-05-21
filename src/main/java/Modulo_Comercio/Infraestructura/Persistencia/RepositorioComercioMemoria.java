@@ -23,5 +23,21 @@ public class RepositorioComercioMemoria implements IRepositorioComercio {
         return comercios.containsKey(rut);
     }
 
+    @Override
+    public Comercio obtener(int rut) {
+        Comercio comercio = comercios.get(rut);
+        if (comercio != null) { return comercio; }
+        else throw new RuntimeException("No existe un comercio con el rut: " + rut);
+    }
+
+    @Override
+    public void actualizar(Comercio comercio) {
+        //TODO Actualizar la funcion cuando se agregue la BD
+        if (!existe(comercio.getRut())) {
+            throw new RuntimeException("El comercio no existe");
+        }
+        comercios.put(comercio.getRut(), comercio);
+    }
+
 
 }

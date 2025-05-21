@@ -1,8 +1,10 @@
 package Modulo_Comercio.Interface.Rest;
 
 import Modulo_Comercio.Aplicacion.IAltaComercioServicio;
+import Modulo_Comercio.Aplicacion.ICambioPasswordComercioServicio;
 import Modulo_Comercio.Dominio.*;
 import Modulo_Comercio.Interface.DTO.AltaComercioRequest;
+import Modulo_Comercio.Interface.DTO.CambiarPasswordRequest;
 import jakarta.inject.Inject;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.ws.rs.*;
@@ -20,6 +22,9 @@ public class ComercioController {
 
     @Inject
     private IAltaComercioServicio servicioComercio;
+
+    @Inject
+    ICambioPasswordComercioServicio servicioCambioPassword;
 
     public void cargarDatos() {
         // Crear algunas instancias de los objetos
@@ -44,26 +49,34 @@ public class ComercioController {
         CuentaBancoComercio cuentaBanco = new CuentaBancoComercio(987654321, List.of(deposito1, deposito2));
 
         // Crear objeto Comercio
-        Comercio comercio = new Comercio(12345678, List.of(compra1, compra2), cuentaBanco, List.of(pos1, pos2));
+        Comercio comercio = new Comercio(12345678, List.of(compra1, compra2), cuentaBanco, List.of(pos1, pos2),"1234");
 
         // Simulando la alta de comercio
-        servicioComercio.altaComercio(comercio.getRut(), comercio.getCompras(), comercio.getCuenta(), comercio.getPos());
+        servicioComercio.altaComercio(comercio.getRut(), comercio.getCompras(), comercio.getCuenta(), comercio.getPos(), comercio.getPassword());
     }
 
     @POST
     //ComercioRequest es el JSON que nos llega
     public Response altaComercio(AltaComercioRequest request) {
         try {
-            servicioComercio.altaComercio(request.getRut(), request.getCompras(), request.getCuenta(), request.getPos());
+            if (request.getPassword() == null || request.getPassword().isEmpty()) {
+                // Lanzar una excepción con el mensaje de que no se recibió la contraseña
+                throw new IllegalArgumentException("No se recibió la contraseña.");
+            }
+            servicioComercio.altaComercio(request.getRut(), request.getCompras(), request.getCuenta(), request.getPos(), request.getPassword());
             return Response.status(Response.Status.CREATED).build();
+        } catch (IllegalArgumentException e) {
+            // Responder con un 400 Bad Request cuando no se recibe la contraseña correctamente
+            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
         } catch (RuntimeException e) {
             return Response.status(Response.Status.CONFLICT).entity(e.getMessage()).build();
         }
     }
 
     /*
-    Llamar Post http://localhost:8080/Proyecto/api/comercios
-         {
+    POST: http://localhost:8080/Proyecto/api/comercios
+    BODY:
+        {
           "rut": 12345678,
           "compras": [
             {
@@ -111,9 +124,30 @@ public class ComercioController {
             {
               "id": 2
             }
-          ]
+          ],
+          "password": "miPassword123"
         }
-    */
+     */
+
+    @PATCH
+    @Path("/{id}/password")
+    public Response cambiarPassword(@PathParam("id") int id, CambiarPasswordRequest request) {
+        try {
+            servicioCambioPassword.cambiarPassword(id, request.getPasswordActual(), request.getPasswordNueva());
+            return Response.ok().build();
+        } catch (RuntimeException e) {
+            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+        }
+    }
+
+    /*
+    PATCH: http://localhost:8080/Proyecto/api/comercios/12345678/password
+    BODY:
+        {
+          "passwordActual": "miPassword123",
+          "passwordNueva": "nuevaPassword456"
+        }
+     */
 
     @GET
     @Path("/ping")
@@ -122,6 +156,6 @@ public class ComercioController {
         return "Comercio API funcionando";
     }
 
-    //Llamar GET http://localhost:8080/Proyecto/api/comercios/ping
+    //GET http://localhost:8080/Proyecto/api/comercios/ping
 
 }
