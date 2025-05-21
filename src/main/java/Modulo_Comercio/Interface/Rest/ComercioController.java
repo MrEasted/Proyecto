@@ -5,12 +5,17 @@ import Modulo_Comercio.Aplicacion.ICambioPasswordComercioServicio;
 import Modulo_Comercio.Dominio.*;
 import Modulo_Comercio.Interface.DTO.AltaComercioRequest;
 import Modulo_Comercio.Interface.DTO.CambiarPasswordRequest;
+import Modulo_Comercio.Aplicacion.IRealizarReclamo;
+import Modulo_Comercio.Aplicacion.IObtenerDepositosEnRango;
+import Modulo_Comercio.Aplicacion.ObtenerDepositosEnRango;
+import Modulo_Comercio.Dominio.*;
+import Modulo_Comercio.Interface.DTO.AltaComercioRequest;
+import Modulo_Comercio.Interface.DTO.ReclamoDTO;
 import jakarta.inject.Inject;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -22,8 +27,11 @@ public class ComercioController {
 
     @Inject
     private IAltaComercioServicio servicioComercio;
+    @Inject
+    private IRealizarReclamo realizarReclamo;
 
     @Inject
+
     ICambioPasswordComercioServicio servicioCambioPassword;
 
     public void cargarDatos() {
@@ -54,6 +62,10 @@ public class ComercioController {
         // Simulando la alta de comercio
         servicioComercio.altaComercio(comercio.getRut(), comercio.getCompras(), comercio.getCuenta(), comercio.getPos(), comercio.getPassword());
     }
+
+    private IObtenerDepositosEnRango servicioCuentaBanco;
+
+
 
     @POST
     //ComercioRequest es el JSON que nos llega
@@ -157,5 +169,35 @@ public class ComercioController {
     }
 
     //GET http://localhost:8080/Proyecto/api/comercios/ping
+
+
+
+
+
+
+    @POST
+    @Path("/reclamo")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response crearReclamo(ReclamoDTO dto) {
+        try {
+            System.out.println("Reclamo recibido: " + dto.getReclamo());
+            System.out.println("RUT recibido: " + dto.getRut());
+
+            realizarReclamo.realizarReclamo(dto.getReclamo(), dto.getRut());
+            return Response.ok("Reclamo registrado exitosamente").build();
+        } catch (RuntimeException e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity("Error: " + e.getMessage())
+                    .build();
+        }
+    }
+  
+   public List<Deposito> ObtenerDepositosEnRango(int rut, LocalDate fecha, LocalDate fecha1) {
+
+
+        return servicioCuentaBanco.ObtenerDepositosRango(rut,fecha,fecha1);
+
+    }
+
 
 }

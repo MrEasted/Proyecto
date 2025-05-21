@@ -1,13 +1,15 @@
 package Modulo_Transferencias.Dominio;
 
+import java.time.LocalDate;
+
 public class Tarjeta {
 
     private int numero;
     private String marca;
-    private Date localDate;
+    private LocalDate localDate;
 
 
-    public Tarjeta(int numero, Date localDate, String marca) {
+    public Tarjeta(int numero, LocalDate localDate, String marca) {
         this.numero = numero;
         this.localDate = localDate;
         this.marca = marca;
@@ -29,11 +31,11 @@ public class Tarjeta {
         this.marca = marca;
     }
 
-    public Date getLocalDate() {
+    public LocalDate getLocalDate() {
         return localDate;
     }
 
-    public void setLocalDate(Date localDate) {
+    public void setLocalDate(LocalDate localDate) {
         this.localDate = localDate;
     }
 }
