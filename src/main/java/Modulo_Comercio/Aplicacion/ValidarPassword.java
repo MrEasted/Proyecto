@@ -27,7 +27,7 @@ public class ValidarPassword {
     }
 
     private static boolean esPasswordComún(String nuevaContraseña) {
-        //TODO
+        //TODO agregar nuevas posibles passwords tipicas
         List<String> PasswordComunes = Arrays.asList("12345678", "password1", "contraseña", "qwertyuiop");
         return PasswordComunes.contains(nuevaContraseña);
     }
