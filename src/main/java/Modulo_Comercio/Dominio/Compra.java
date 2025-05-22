@@ -3,6 +3,9 @@ package Modulo_Comercio.Dominio;
 import java.time.LocalDate;
 
 public class Compra {
+
+    private static int contadorId = 1;
+
     private int id;
     private float importe;
     private LocalDate fecha;
@@ -11,7 +14,7 @@ public class Compra {
     private Pos pos;
 
     public Compra(int id, int importe, LocalDate fecha, String descripcion, Tarjeta tarjeta, Pos pos) {
-        this.id = id;
+        this.id = contadorId++;
         this.importe = importe;
         this.fecha = fecha;
         this.descripcion = descripcion;

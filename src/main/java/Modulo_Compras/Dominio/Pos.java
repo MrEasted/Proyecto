@@ -11,6 +11,9 @@ public class Pos {
 
     public Pos(){}
 
+    public Pos(Integer integer) {
+    }
+
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     public boolean isActivo() { return activo; }

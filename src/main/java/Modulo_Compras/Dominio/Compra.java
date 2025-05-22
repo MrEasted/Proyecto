@@ -1,47 +1,79 @@
 package Modulo_Compras.Dominio;
 
+
+import java.time.LocalDate;
+
 public class Compra {
-    private int idCompra;
-    private int importe;
-    private Date fecha;
-    private String cantidades;
 
-    public Compra(int idCompra, int importe, Date fecha, String cantidades) {
-        this.idCompra = idCompra;
-        this.importe = importe;
+    private static int contadorId = 1;
+
+
+    private int idPos;
+    private String descripcion;
+    private LocalDate fecha;
+    private double importe;
+    private int id;
+    private Tarjeta tarjeta;
+
+    public Compra(int idPos, String descripcion, LocalDate fecha, double importe,Tarjeta tarjeta) {
+        this.id = contadorId++;
+        this.idPos = idPos;
+        this.descripcion = descripcion;
         this.fecha = fecha;
-        this.cantidades = cantidades;
-    }
-
-    public int getIdCompra() {
-        return idCompra;
-    }
-
-    public void setIdCompra(int idCompra) {
-        this.idCompra = idCompra;
-    }
-
-    public int getImporte() {
-        return importe;
-    }
-
-    public void setImporte(int importe) {
         this.importe = importe;
+        this.tarjeta = null;
     }
 
-    public Date getFecha() {
+
+    public Compra() {
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIdPos() {
+        return idPos;
+    }
+
+    public void setIdPos(int idPos) {
+        this.idPos = idPos;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
-    public String getCantidades() {
-        return cantidades;
+    public double getImporte() {
+        return importe;
     }
 
-    public void setCantidades(String cantidades) {
-        this.cantidades = cantidades;
+    public void setImporte(double importe) {
+        this.importe = importe;
     }
+
+    public Tarjeta getTarjeta() {
+        return tarjeta;
+    }
+    public void setTarjeta(Tarjeta tarjeta) {
+        this.tarjeta = tarjeta;
+    }
+
 }

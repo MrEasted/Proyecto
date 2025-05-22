@@ -38,4 +38,13 @@ public class TransferenciasController {
         }
     }
 
+    //Datos transferencias en rango
+
+//    {
+//        "rut": 2,
+//            "fechaInicio": "2024-05-01",
+//            "fechaFin": "2026-05-20"
+//    }
+
+
 }
