@@ -1,22 +1,24 @@
-package Modulo_Comercio.Dominio;
+package Modulo_Monitoreo.Dominio;
+
+import Modulo_Comercio.Dominio.Comercio;
 
 import java.time.LocalDate;
 
 public class Reclamos {
     private String reclamo;
-    private Comercio Comercio;
+    private Modulo_Comercio.Dominio.Comercio Comercio;
     private LocalDate fecha;
 
     public Reclamos() {
     }
 
 
-    public Reclamos(Comercio comercio, String reclamo) {
+    public Reclamos(Modulo_Comercio.Dominio.Comercio comercio, String reclamo) {
         Comercio = comercio;
         this.reclamo = reclamo;
     }
 
-    public Comercio getComercio() {
+    public Modulo_Comercio.Dominio.Comercio getComercio() {
         return Comercio;
     }
 
