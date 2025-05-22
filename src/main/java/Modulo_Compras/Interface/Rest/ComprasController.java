@@ -2,13 +2,11 @@ package Modulo_Compras.Interface.Rest;
 
 
 import Modulo_Compras.Aplicacion.IProcesarPagoServicio;
+import Modulo_Compras.Dominio.Aplicacion.IMontoActualVendidoServicio;
 import Modulo_Compras.Interface.DTO.DatosPagos;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
@@ -18,6 +16,10 @@ import jakarta.ws.rs.core.Response;
 @RequestScoped
 public class ComprasController {
 
+
+
+    @Inject
+    IMontoActualVendidoServicio montoActualVendidoServicio;
 
     @Inject
     private IProcesarPagoServicio servicioPagoServicio;
@@ -42,6 +44,25 @@ public class ComprasController {
 
     }
 
+
+
+
+
+    @GET
+    @Path("/montoActualVendido")
+    @Produces(MediaType.TEXT_PLAIN)
+    public float montoActualVendido(@QueryParam("rut") int rut) {
+        return montoActualVendidoServicio.montoActualVendido(rut);
+    }
+
+
+
+    @GET
+    @Path("/ping")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String ping() {
+        return "Comercio API funcionando";
+    }
 
 
 }

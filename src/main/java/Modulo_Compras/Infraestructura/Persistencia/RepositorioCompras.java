@@ -15,6 +15,8 @@ public class RepositorioCompras implements IRepositorioCompras {
     private final Map<Integer, Tarjeta> comercios = new HashMap<>();
 
 
-
-
+    @Override
+    public float montoVendidoactual(int rut) {
+        return 0;
+    }
 }
