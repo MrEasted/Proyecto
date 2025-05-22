@@ -23,8 +23,9 @@ public class RepositorioPosMemoria implements IRepositorioPos {
     }
 
 
-
-
-
+    @Override
+    public Pos obtenerPosPorId(int id) {
+        return listaPos.get(id);
+    }
 
 }
