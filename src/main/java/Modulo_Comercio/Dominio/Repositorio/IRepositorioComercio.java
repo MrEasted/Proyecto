@@ -1,6 +1,5 @@
 package Modulo_Comercio.Dominio.Repositorio;
 import Modulo_Comercio.Dominio.Comercio;
-import Modulo_Comercio.Dominio.CuentaBancoComercio;
 
 public interface IRepositorioComercio {
 

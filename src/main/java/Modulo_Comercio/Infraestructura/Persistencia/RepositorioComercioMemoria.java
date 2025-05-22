@@ -1,7 +1,6 @@
 package Modulo_Comercio.Infraestructura.Persistencia;
 
 import Modulo_Comercio.Dominio.Comercio;
-import Modulo_Comercio.Dominio.CuentaBancoComercio;
 import Modulo_Comercio.Dominio.Repositorio.IRepositorioComercio;
 import jakarta.enterprise.context.ApplicationScoped;
 
@@ -11,6 +10,9 @@ import java.util.Map;
 
 @ApplicationScoped
 public class RepositorioComercioMemoria implements IRepositorioComercio {
+
+
+
 
     private final Map<Integer, Comercio> comercios = new HashMap<>();
 
@@ -28,4 +30,5 @@ public class RepositorioComercioMemoria implements IRepositorioComercio {
     public Comercio obtener(int rut) {
         return comercios.get(rut);
     }
+
 }

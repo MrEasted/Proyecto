@@ -1,5 +1,6 @@
 package Modulo_Comercio.Dominio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CuentaBancoComercio {
@@ -14,6 +15,8 @@ public class CuentaBancoComercio {
 
     public CuentaBancoComercio() {
     }
+
+
 
     public int getNroCuenta() {
         return nroCuenta;

@@ -11,6 +11,12 @@ public class Deposito {
         this.importe = importe;
     }
 
+    public Deposito() {
+    }
+
+
+
+
     public LocalDate getFecha() {
         return fecha;
     }

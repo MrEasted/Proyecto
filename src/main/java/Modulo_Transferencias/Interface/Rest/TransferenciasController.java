@@ -1,9 +1,9 @@
-package Modulo_Transferencias.Interface;
+package Modulo_Transferencias.Interface.Rest;
 
 
-import Modulo_Comercio.Aplicacion.ObtenerDepositosEnRango;
-import Modulo_Comercio.Interface.Rest.ComercioController;
+import Modulo_Transferencias.Aplicacion.IFuncionesTransferencias;
 import Modulo_Transferencias.Interface.DTO.ObtenerDepositosRequest;
+import Modulo_Transferencias.Interface.Evento.In.ObserverModuloComercio;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
@@ -13,23 +13,26 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
-import java.time.LocalDate;
-import java.util.List;
+import java.util.logging.Logger;
 
 @Path("/Depositos")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @RequestScoped
-public class CuentaBancoController {
+public class TransferenciasController {
 
     @Inject
-    ComercioController ctrl;
+    private IFuncionesTransferencias servicioCuentaBanco;
+
+    private static final Logger log = Logger.getLogger(String.valueOf(ObserverModuloComercio.class));
 
     @POST
     public Response ConsultarDepositosFecha(ObtenerDepositosRequest request) {
 
+        log.info("Entre a mi response ConsultarDepositosFecha y obtengo el rut: " + request.getRut());
+
         try {
-            return Response.ok(ctrl.ObtenerDepositosEnRango(request.rut, request.fechaInicio, request.fechaFin)).build();
+            return Response.ok(servicioCuentaBanco.ObtenerDepositosRango(request.rut, request.fechaInicio, request.fechaFin)).build();
         } catch (RuntimeException e) {
             return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
         }

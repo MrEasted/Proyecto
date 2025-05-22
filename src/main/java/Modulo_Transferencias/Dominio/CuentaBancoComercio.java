@@ -1,5 +1,6 @@
 package Modulo_Transferencias.Dominio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CuentaBancoComercio {
@@ -11,6 +12,11 @@ public class CuentaBancoComercio {
         this.nroCuenta = nroCuenta;
         this.depositos = depositos;
     }
+
+    public CuentaBancoComercio() {
+    }
+
+
 
     public int getNroCuenta() {
         return nroCuenta;

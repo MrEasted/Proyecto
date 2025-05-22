@@ -1,4 +1,4 @@
-package Modulo_Comercio.Dominio;
+package Modulo_Compras.Dominio;
 
 public class Pos {
     private int id;
@@ -11,12 +11,7 @@ public class Pos {
 
     public Pos(){}
 
-
-
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     public boolean isActivo() { return activo; }
-
-    public void setActivo(boolean activo) { this.activo = activo; }
-
 }

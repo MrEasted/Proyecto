@@ -1,9 +1,6 @@
 package Modulo_Comercio.Interface.Rest;
 
-import Modulo_Comercio.Aplicacion.IAltaComercioServicio;
-import Modulo_Comercio.Aplicacion.IObtenerDepositosEnRango;
-import Modulo_Comercio.Aplicacion.ObtenerDepositosEnRango;
-import Modulo_Comercio.Dominio.*;
+import Modulo_Comercio.Aplicacion.IFuncionesComercio;
 import Modulo_Comercio.Interface.DTO.AltaComercioRequest;
 import jakarta.inject.Inject;
 import jakarta.enterprise.context.RequestScoped;
@@ -11,8 +8,6 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
-import java.time.LocalDate;
-import java.util.List;
 
 @Path("/comercios")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -21,10 +16,10 @@ import java.util.List;
 public class ComercioController {
 
     @Inject
-    private IAltaComercioServicio servicioComercio;
+    private IFuncionesComercio servicioComercio;
 
-    @Inject
-    private IObtenerDepositosEnRango servicioCuentaBanco;
+
+
 
 //    public void cargarDatos() {
 //        // Crear algunas instancias de los objetos
@@ -130,12 +125,8 @@ public class ComercioController {
     //Llamar GET http://localhost:8080/Proyecto/api/comercios/ping
 
 
-    public List<Deposito> ObtenerDepositosEnRango(int rut, LocalDate fecha, LocalDate fecha1) {
 
 
-        return servicioCuentaBanco.ObtenerDepositosRango(rut,fecha,fecha1);
-
-    }
 
 
 }
