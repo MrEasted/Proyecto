@@ -1,15 +1,15 @@
-package Modulo_Transferencias.Interface.Evento.In;
+package Modulo_Compras.Interface.Evento.In;
 
+
+import Modulo_Compras.Aplicacion.IAltaComercioServicio;
 import Modulo_Comercio.Interface.Evento.Out.ComercioNuevoComercio;
-import Modulo_Transferencias.Aplicacion.IFuncionesTransferencias;
-import Modulo_Transferencias.Dominio.Comercio;
-import Modulo_Transferencias.Dominio.CuentaBancoComercio;
-import Modulo_Transferencias.Dominio.Pos;
+import Modulo_Compras.Dominio.Comercio;
+import Modulo_Compras.Dominio.CuentaBancoComercio;
+import Modulo_Compras.Dominio.Pos;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.event.Observes;
 import jakarta.inject.Inject;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -19,14 +19,14 @@ public class ObserverModuloComercio {
 
     private static final Logger log = Logger.getLogger(String.valueOf(ObserverModuloComercio.class));
 
-
     @Inject
-    private IFuncionesTransferencias ServicioTransferencias;
-
+    IAltaComercioServicio altaComercioServicio;
 
     public void accept(@Observes ComercioNuevoComercio event) {
 
-        log.info("ACEPTE EVENTO DE MODULO COMERCIO DATOS: " + event.toString() + "//" + event.getPosIds() + "//" + event.getNroCuentaBancoComercio());
+
+
+        log.info("Acepte evento de moudulo comercio en modulo compras");
 
 
         CuentaBancoComercio cuenta = new CuentaBancoComercio();
@@ -41,16 +41,15 @@ public class ObserverModuloComercio {
         Comercio comercio = new Comercio();
         comercio.setRut(event.getRut());
         comercio.setPos(posList);
-        comercio.setCuenta(cuenta);
+        comercio.setCuentabanco(cuenta);
 
 
+        altaComercioServicio.AltaComercio(comercio);
 
 
-        // Guardar en el repositorio de Transferencias
-        ServicioTransferencias.AltaComercio(comercio);
-
-        log.info("Comercio recibido del módulo Comercio y almacenado en Transferencias: " + comercio.getRut());
     }
+
+
 
 
 }
