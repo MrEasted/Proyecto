@@ -9,6 +9,7 @@ import java.util.Map;
 
 @ApplicationScoped
 public class RepositorioPosMemoria implements IRepositorioPos {
+
     private final Map<Integer, Pos> listaPos = new HashMap<>();
 
     @Override
@@ -21,8 +22,10 @@ public class RepositorioPosMemoria implements IRepositorioPos {
         return listaPos.containsKey(id);
     }
 
+
     @Override
     public Pos obtenerPosPorId(int id) {
         return listaPos.get(id);
     }
+
 }

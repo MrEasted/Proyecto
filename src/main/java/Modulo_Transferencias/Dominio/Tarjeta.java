@@ -7,20 +7,35 @@ public class Tarjeta {
     private int numero;
     private String marca;
     private LocalDate localDate;
+    private CuentaBancoCliente cuentaCliente;
 
-
-    public Tarjeta(int numero, LocalDate localDate, String marca) {
+    public Tarjeta(int numero, String marca, LocalDate localDate, CuentaBancoCliente cuentaBancoCliente) {
         this.numero = numero;
-        this.localDate = localDate;
         this.marca = marca;
+        this.localDate = localDate;
+        this.cuentaCliente = cuentaBancoCliente;
     }
 
-    public int getNumero() {
-        return numero;
+    public Tarjeta() {
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+
+
+
+    public CuentaBancoCliente getCuentaCliente() {
+        return cuentaCliente;
+    }
+
+    public void setCuentaCliente(CuentaBancoCliente cuentaCliente) {
+        this.cuentaCliente = cuentaCliente;
+    }
+
+    public LocalDate getLocalDate() {
+        return localDate;
+    }
+
+    public void setLocalDate(LocalDate localDate) {
+        this.localDate = localDate;
     }
 
     public String getMarca() {
@@ -31,12 +46,12 @@ public class Tarjeta {
         this.marca = marca;
     }
 
-    public LocalDate getLocalDate() {
-        return localDate;
+    public int getNumero() {
+        return numero;
     }
 
-    public void setLocalDate(LocalDate localDate) {
-        this.localDate = localDate;
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 }
 

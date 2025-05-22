@@ -10,4 +10,6 @@ public interface  IAltaComercioServicio {
 
     void altaComercio(int rut, List<Compra> compras, CuentaBancoComercio cuenta, List<Pos> pos, String pass);
 
+
+
 }

@@ -1,5 +1,7 @@
 package Modulo_Comercio.Interface.Rest;
 
+import Modulo_Comercio.Aplicacion.IFuncionesComercio;
+
 import Modulo_Comercio.Aplicacion.IAltaComercioServicio;
 import Modulo_Comercio.Aplicacion.ICambioPasswordComercioServicio;
 import Modulo_Comercio.Dominio.*;
@@ -16,8 +18,10 @@ import jakarta.enterprise.context.RequestScoped;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+
 import java.time.LocalDate;
 import java.util.List;
+
 
 @Path("/comercios")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -26,6 +30,12 @@ import java.util.List;
 public class ComercioController {
 
     @Inject
+
+    private IFuncionesComercio servicioComercio;
+
+
+
+
     private IAltaComercioServicio servicioComercio;
     @Inject
     private IRealizarReclamo realizarReclamo;
@@ -64,6 +74,7 @@ public class ComercioController {
     }
 
     private IObtenerDepositosEnRango servicioCuentaBanco;
+
 
 
 
@@ -174,7 +185,6 @@ public class ComercioController {
 
 
 
-
     @POST
     @Path("/reclamo")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -195,9 +205,7 @@ public class ComercioController {
    public List<Deposito> ObtenerDepositosEnRango(int rut, LocalDate fecha, LocalDate fecha1) {
 
 
-        return servicioCuentaBanco.ObtenerDepositosRango(rut,fecha,fecha1);
 
-    }
 
 
 }

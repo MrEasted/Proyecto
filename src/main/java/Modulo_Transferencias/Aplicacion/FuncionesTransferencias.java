@@ -1,31 +1,37 @@
-package Modulo_Comercio.Aplicacion;
+package Modulo_Transferencias.Aplicacion;
 
-import Modulo_Comercio.Dominio.Comercio;
-import Modulo_Comercio.Dominio.Deposito;
-import Modulo_Comercio.Dominio.Repositorio.IRepositorioComercio;
-import Modulo_Comercio.Infraestructura.Persistencia.RepositorioComercioMemoria;
+import Modulo_Comercio.Interface.Rest.ComercioController;
+import Modulo_Transferencias.Dominio.Comercio;
+import Modulo_Transferencias.Dominio.Deposito;
+import Modulo_Transferencias.Dominio.Repositorio.IRepositorioTransferencia;
+import Modulo_Transferencias.Interface.Evento.In.ObserverModuloComercio;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 @ApplicationScoped
-public class ObtenerDepositosEnRango implements IObtenerDepositosEnRango {
+public class FuncionesTransferencias implements IFuncionesTransferencias {
 
     @Inject
-    private IRepositorioComercio repositorio;
+    private IRepositorioTransferencia repositorio;
+
+    private static final Logger log = Logger.getLogger(String.valueOf(ObserverModuloComercio.class));
+
 
     @Override
     public  List<Deposito> ObtenerDepositosRango(int rut, LocalDate fecha, LocalDate fecha1) {
 
+        log.info("ObtenerDepositosRango rut: " + rut);
 
 
-
+        //OBTENGO LOS COMERCIOS DE MODULO COMERCIO
         Comercio comercio = repositorio.obtener(rut);
+
+
 
 
         List<Deposito> depositos = comercio.getCuenta().getDepositos();
@@ -51,4 +57,17 @@ public class ObtenerDepositosEnRango implements IObtenerDepositosEnRango {
             return depositosEnRango;
         }
     }
+
+
+    @Override
+    public void AltaComercio(Comercio comercio) {
+
+
+        repositorio.guardar(comercio);
+
+
+    }
+
+
+
 }
