@@ -2,6 +2,7 @@ package Modulo_Transferencias.Aplicacion;
 
 import Modulo_Comercio.Interface.Rest.ComercioController;
 import Modulo_Transferencias.Dominio.Comercio;
+import Modulo_Transferencias.Dominio.CuentaBancoComercio;
 import Modulo_Transferencias.Dominio.Deposito;
 import Modulo_Transferencias.Dominio.Repositorio.IRepositorioTransferencia;
 import Modulo_Transferencias.Interface.Evento.In.ObserverModuloComercio;
@@ -65,6 +66,32 @@ public class FuncionesTransferencias implements IFuncionesTransferencias {
 
         repositorio.guardar(comercio);
 
+
+    }
+
+
+
+
+    @Override
+    public void CreoTransfererencia(int rut, int importe){
+        Comercio com = repositorio.obtener(rut);
+        CuentaBancoComercio cuen = com.getCuenta();
+        LocalDate fecha = LocalDate.now();
+        Deposito deposito = new Deposito(fecha, importe);
+
+        //Toma el rut del comercio y el importe a pagar y setea la fecha de la transferencia en el dia que se te este ejecutando la funcion
+
+        if(repositorio.existe(rut)){
+            if(cuen!=null){
+                repositorio.guardoTransferencia(com, deposito, cuen);
+
+            }
+
+        }else{
+            throw new RuntimeException("El comercio no existe");
+        }
+
+        //Aca Seguiria con la url de la otra api mandando la transferencia
 
     }
 

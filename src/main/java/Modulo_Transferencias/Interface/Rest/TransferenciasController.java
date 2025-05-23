@@ -3,13 +3,11 @@ package Modulo_Transferencias.Interface.Rest;
 
 import Modulo_Transferencias.Aplicacion.IFuncionesTransferencias;
 import Modulo_Transferencias.Interface.DTO.ObtenerDepositosRequest;
+import Modulo_Transferencias.Interface.DTO.RealizarRepositoRequest;
 import Modulo_Transferencias.Interface.Evento.In.ObserverModuloComercio;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
@@ -45,6 +43,34 @@ public class TransferenciasController {
 //            "fechaInicio": "2024-05-01",
 //            "fechaFin": "2026-05-20"
 //    }
+
+
+    @POST
+    @Path("/NuevaTransferencia")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response RealizarDeposito(RealizarRepositoRequest request) {
+
+
+        try {
+
+            servicioCuentaBanco.CreoTransfererencia(request.getRut(), request.getMonto());
+
+             return Response.ok("Transferencia realizada exitosamente").build();
+        } catch (RuntimeException e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity("Error: " + e.getMessage())
+                    .build();
+        }
+
+    }
+
+
+    @GET
+    @Path("/ping")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String ping() {
+        return "Comercio API funcionando";
+    }
 
 
 }
