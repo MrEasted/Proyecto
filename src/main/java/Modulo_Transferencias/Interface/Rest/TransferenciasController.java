@@ -13,6 +13,7 @@ import jakarta.ws.rs.core.Response;
 
 import java.util.logging.Logger;
 
+
 @Path("/Depositos")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
@@ -21,6 +22,7 @@ public class TransferenciasController {
 
     @Inject
     private IFuncionesTransferencias servicioCuentaBanco;
+
 
     private static final Logger log = Logger.getLogger(String.valueOf(ObserverModuloComercio.class));
 
