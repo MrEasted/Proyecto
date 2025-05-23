@@ -4,7 +4,6 @@ import Modulo_Transferencias.Dominio.Comercio;
 import Modulo_Transferencias.Dominio.CuentaBancoComercio;
 import Modulo_Transferencias.Dominio.Deposito;
 
-import java.time.LocalDate;
 
 public interface IRepositorioTransferencia {
 

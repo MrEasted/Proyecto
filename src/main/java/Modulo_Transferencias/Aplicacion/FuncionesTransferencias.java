@@ -1,6 +1,5 @@
 package Modulo_Transferencias.Aplicacion;
 
-import Modulo_Comercio.Interface.Rest.ComercioController;
 import Modulo_Transferencias.Dominio.Comercio;
 import Modulo_Transferencias.Dominio.CuentaBancoComercio;
 import Modulo_Transferencias.Dominio.Deposito;

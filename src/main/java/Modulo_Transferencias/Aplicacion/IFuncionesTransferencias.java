@@ -13,6 +13,6 @@ public interface IFuncionesTransferencias {
 
     void AltaComercio(Comercio Comercio);
 
-    void CreoTransfererencia(int rut, int monto, CuentaBancoComercio cuentbanco);
+    void CreoTransfererencia(int rut, int monto);
 
 }

@@ -4,13 +4,6 @@ public class RealizarRepositoRequest {
     int rut;
     int monto;
 
-    public RealizarRepositoRequest() {}
-
-    public RealizarRepositoRequest(int rut, int monto) {
-        this.rut = rut;
-        this.monto = monto;
-
-    }
     public int getRut() {
         return rut;
     }

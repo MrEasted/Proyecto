@@ -7,7 +7,6 @@ import Modulo_Transferencias.Dominio.Repositorio.IRepositorioTransferencia;
 import Modulo_Transferencias.Interface.Evento.In.ObserverModuloComercio;
 import jakarta.enterprise.context.ApplicationScoped;
 
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
