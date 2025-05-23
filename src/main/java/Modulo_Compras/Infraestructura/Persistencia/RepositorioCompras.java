@@ -37,6 +37,8 @@ public class RepositorioCompras implements IRepositorioCompras {
         tarjetas.put(tarjeta.getNumero(), tarjeta);
     }
 
-
-
+    @Override
+    public float montoVendidoactual(int rut) {
+        return 0;
+    }
 }

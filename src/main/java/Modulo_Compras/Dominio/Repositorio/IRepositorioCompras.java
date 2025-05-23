@@ -13,5 +13,6 @@ public interface IRepositorioCompras {
     //Tarjetas
     void guardarTarjeta(Tarjeta tarjeta);
 
+    float   montoVendidoactual(int rut);
 
 }
