@@ -13,6 +13,7 @@ public class RepositorioCompras implements IRepositorioCompras {
 
 
     private final Map<Integer, Comercio> comercios = new HashMap<>();
+
     private final Map<Integer, Tarjeta> tarjetas = new HashMap<>();
 
     @Override

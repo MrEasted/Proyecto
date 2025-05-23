@@ -10,7 +10,6 @@ public class Comercio {
     private List<Pos> pos;
 
     private String password;
-
     private List<Reclamos> reclamos;
 
 
@@ -23,6 +22,17 @@ public class Comercio {
     }
 
     public  Comercio() {}
+
+    public Comercio(int rut, List<Compra> compras, CuentaBancoComercio cuenta, List<Pos> pos) {
+
+        this.rut = rut;
+        this.cuenta = cuenta;
+        this.pos = pos;
+
+
+
+
+    }
 
 
     public int getRut() {
@@ -38,6 +48,7 @@ public class Comercio {
     public void setCuenta(CuentaBancoComercio cuenta) {
         this.cuenta = cuenta;
     }
+
     public List<Pos> getPos() { return pos; }
     public void setPos(List<Pos> pos) { this.pos = pos; }
 
