@@ -74,9 +74,6 @@ public class RepositorioComercioMemoria implements IRepositorioComercio {
 
 
 
-    @Override
-    public Comercio obtener(int rut) {
-        return comercios.get(rut);
-    }
+
 
 }

@@ -10,6 +10,7 @@ public interface IRepositorioComercio {
     void actualizar(Comercio comercio);
 
     void realizarReclamo(String reclamo, int comercio);
-    Comercio obtener(int rut);
+
+
   
 }

@@ -24,10 +24,7 @@ public class ObserverModuloComercio {
 
     public void accept(@Observes ComercioNuevoComercio event) {
 
-
-
         log.info("Acepte evento de moudulo comercio en modulo compras");
-
 
         CuentaBancoComercio cuenta = new CuentaBancoComercio();
 
