@@ -89,6 +89,8 @@ public class ProcesarPagoServicio  implements IProcesarPagoServicio{
 
             log.info("3 -ProcesarPago");
 
+            //
+
         }else{
 
             log.info("No existe un comercio -ProcesarPago");
