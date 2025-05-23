@@ -6,7 +6,6 @@ import Modulo_Compras.Aplicacion.IProcesarPagoServicio;
 import Modulo_Compras.Aplicacion.IMontoVendido;
 
 import Modulo_Compras.Aplicacion.IVentasDiariasServicio;
-import Modulo_Compras.Dominio.Aplicacion.IMontoActualVendidoServicio;
 
 import Modulo_Compras.Interface.DTO.DatosPagos;
 import Modulo_Compras.Interface.DTO.DatosVD;
