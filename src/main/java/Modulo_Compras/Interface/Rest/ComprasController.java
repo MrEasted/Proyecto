@@ -2,8 +2,10 @@ package Modulo_Compras.Interface.Rest;
 
 
 import Modulo_Compras.Aplicacion.IProcesarPagoServicio;
+import Modulo_Compras.Aplicacion.IVentasDiariasServicio;
 import Modulo_Compras.Dominio.Aplicacion.IMontoActualVendidoServicio;
 import Modulo_Compras.Interface.DTO.DatosPagos;
+import Modulo_Compras.Interface.DTO.DatosVD;
 import Modulo_Transferencias.Interface.Evento.In.ObserverModuloComercio;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -26,6 +28,9 @@ public class ComprasController {
 
     @Inject
     private IProcesarPagoServicio servicioPagoServicio;
+
+    @Inject
+    private IVentasDiariasServicio ventasDiariasServicio;
 
 
     private static final Logger log = Logger.getLogger(String.valueOf(ObserverModuloComercio.class));
@@ -58,7 +63,30 @@ public class ComprasController {
 //    }
 
 
+    @POST
+    @Path("/VentasDiarias")
+    public Response VentasDiarias(DatosVD request) {
 
+        log.info("Entre a mi response VentasDiarios y obtengo el rut: " + request.getRut());
+
+        try {
+
+            return Response.ok(ventasDiariasServicio.VentasDiarias(request.getRut())).build();
+
+        } catch (RuntimeException e) {
+
+            return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
+        }
+
+    }
+  
+  
+  //{
+  //
+  //  "rut":1
+  //
+  //}
+  
 
 
 
