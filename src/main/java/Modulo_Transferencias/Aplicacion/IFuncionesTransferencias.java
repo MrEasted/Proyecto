@@ -12,4 +12,6 @@ public interface IFuncionesTransferencias {
 
     void AltaComercio(Comercio Comercio);
 
+    void CreoTransfererencia(int rut, int monto);
+
 }

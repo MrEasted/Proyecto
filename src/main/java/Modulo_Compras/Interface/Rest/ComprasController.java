@@ -2,8 +2,12 @@ package Modulo_Compras.Interface.Rest;
 
 
 import Modulo_Compras.Aplicacion.IProcesarPagoServicio;
+
+import Modulo_Compras.Aplicacion.IMontoVendido;
+
 import Modulo_Compras.Aplicacion.IVentasDiariasServicio;
 import Modulo_Compras.Dominio.Aplicacion.IMontoActualVendidoServicio;
+
 import Modulo_Compras.Interface.DTO.DatosPagos;
 import Modulo_Compras.Interface.DTO.DatosVD;
 import Modulo_Transferencias.Interface.Evento.In.ObserverModuloComercio;
@@ -13,6 +17,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
+import java.time.LocalDate;
 import java.util.logging.Logger;
 
 @Path("/Compras")
@@ -24,7 +29,7 @@ public class ComprasController {
 
 
     @Inject
-    IMontoActualVendidoServicio montoActualVendidoServicio;
+    IMontoVendido montoActualVendidoServicio;
 
     @Inject
     private IProcesarPagoServicio servicioPagoServicio;
@@ -93,6 +98,13 @@ public class ComprasController {
 
 
 
+
+//    {
+//
+//            "rut": 12345678
+//
+//    }
+
     @GET
     @Path("/montoActualVendido")
     @Produces(MediaType.TEXT_PLAIN)
@@ -100,6 +112,24 @@ public class ComprasController {
         return montoActualVendidoServicio.montoActualVendido(rut);
     }
 
+
+//    {
+//
+//            "rut": 12345678
+//            "fechaInicio": "2024-05-12"
+//            "fechaFin": "2024-05-17"
+//    }
+
+    @GET
+    @Path("/montoVendidoEntreFechas")
+    @Produces(MediaType.TEXT_PLAIN)
+    public float montoVendidoEntreFechas(@QueryParam("rut") int rut, @QueryParam("fechaInicio") LocalDate fechaInicio,  @QueryParam("fechaFin") LocalDate fechaFin) {
+        return montoActualVendidoServicio.montoVendidoentreFechas(rut, fechaInicio, fechaFin);
+    }
+
+
+
+    //CHEQUEAR QUE LLEGA LA CONSULTA
 
 
     @GET
