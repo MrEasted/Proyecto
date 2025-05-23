@@ -32,6 +32,7 @@ public class ProcesarPagoServicio  implements IProcesarPagoServicio{
 
         log.info("Procesar Pago");
 
+        log.info("Pos = "+Pos);
 
 
         //existe comercio?
@@ -48,7 +49,7 @@ public class ProcesarPagoServicio  implements IProcesarPagoServicio{
             log.info("Creando tarjeta... -ProcesarPago");
             Tarjeta t = new Tarjeta(tarjeta,fechaVencimientoT,marcaTarjeta);
 
-            log.info("Datos tarjeta: fechaV: " + t.getFechaVencimiento() + " Marca: " + t.getMarca() + "numeroTarjeta: " + t.getNumero());
+            log.info(" Datos tarjeta: fechaV:  " + t.getFechaVencimiento() + " Marca: " + t.getMarca() + "  numeroTarjeta: " + t.getNumero());
 
             repositorio.guardarTarjeta(t);
 
@@ -68,6 +69,7 @@ public class ProcesarPagoServicio  implements IProcesarPagoServicio{
                 List<Compra> compras = new ArrayList<>();
 
                 compras.add(compra);
+                comercio.setCompras(compras);
             }else{
 
                 comercio.getCompras().add(compra);
