@@ -1,7 +1,7 @@
 package Modulo_Monitoreo.Interface;
 
 import Modulo_Comercio.Dominio.Comercio;
-import Modulo_Comercio.Dominio.Reclamos;
+import Modulo_Comercio.Dominio.Reclamo;
 import Modulo_Comercio.Interface.Evento.Out.ReclamoNuevo;
 import Modulo_Monitoreo.Aplicacon.IRealizarReclamoNotificacion;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -22,7 +22,7 @@ public class ObserverModuloComercio {
         log.info("Evento de nuevo reclamo recibido: " + event.toString());
 
         // Crear una instancia de Reclamos y asignar los datos del evento
-        Reclamos reclamo = new Reclamos();
+        Reclamo reclamo = new Reclamo();
         reclamo.setReclamo(event.getReclamo());
         reclamo.setFecha(event.getFecha());
 

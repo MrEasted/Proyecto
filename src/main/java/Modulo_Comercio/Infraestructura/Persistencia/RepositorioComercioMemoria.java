@@ -3,9 +3,7 @@ package Modulo_Comercio.Infraestructura.Persistencia;
 import Modulo_Comercio.Dominio.Comercio;
 
 
-import Modulo_Comercio.Dominio.Reclamos;
-
-import Modulo_Comercio.Dominio.CuentaBancoComercio;
+import Modulo_Comercio.Dominio.Reclamo;
 
 
 import Modulo_Comercio.Dominio.Repositorio.IRepositorioComercio;
@@ -15,7 +13,6 @@ import jakarta.enterprise.context.ApplicationScoped;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @ApplicationScoped
@@ -56,7 +53,7 @@ public class RepositorioComercioMemoria implements IRepositorioComercio {
     @Override
     public void realizarReclamo(String reclamo, int comercio) {
         Comercio co = comercios.get(comercio);
-        Reclamos recla = new Reclamos();
+        Reclamo recla = new Reclamo();
         recla.setReclamo(reclamo);
         recla.setComercio(co);
         LocalDate fecha = LocalDate.now();

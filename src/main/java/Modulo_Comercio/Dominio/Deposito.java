@@ -1,8 +1,20 @@
 package Modulo_Comercio.Dominio;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "comercio_deposito")
 public class Deposito {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @ManyToOne
+    @JoinColumn(name = "cuenta_id")
+    private CuentaBancoComercio cuenta;
+
     private LocalDate fecha;
     private float importe;
 

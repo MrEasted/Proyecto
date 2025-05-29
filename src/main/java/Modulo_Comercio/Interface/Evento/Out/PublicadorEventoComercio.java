@@ -3,7 +3,7 @@ package Modulo_Comercio.Interface.Evento.Out;
 
 import Modulo_Comercio.Dominio.Comercio;
 import Modulo_Comercio.Dominio.Pos;
-import Modulo_Comercio.Dominio.Reclamos;
+import Modulo_Comercio.Dominio.Reclamo;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.event.Event;
 import jakarta.inject.Inject;
@@ -42,7 +42,7 @@ public class PublicadorEventoComercio {
     @Inject
     private Event<ReclamoNuevo> ReclamoEvent;
 
-    public void publicarNuevoReclamo(Reclamos reclamo) {
+    public void publicarNuevoReclamo(Reclamo reclamo) {
         ReclamoNuevo evento = new ReclamoNuevo(
                 reclamo.getReclamo(),
                 reclamo.getComercio().getRut(),

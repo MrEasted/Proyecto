@@ -1,20 +1,29 @@
 package Modulo_Comercio.Dominio;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "comercio_compra")
 public class Compra {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-    private static int contadorId = 1;
+    @ManyToOne
+    @JoinColumn(name = "tarjeta_id")
+    private Tarjeta tarjeta;
 
-    private int id;
+    @ManyToOne
+    @JoinColumn(name = "pos_id")
+    private Pos pos;
+
     private float importe;
     private LocalDate fecha;
     private String descripcion;
-    private Tarjeta tarjeta;
-    private Pos pos;
 
-    public Compra(int id, int importe, LocalDate fecha, String descripcion, Tarjeta tarjeta, Pos pos) {
-        this.id = contadorId++;
+    public Compra(float importe, LocalDate fecha, String descripcion, Tarjeta tarjeta, Pos pos) {
         this.importe = importe;
         this.fecha = fecha;
         this.descripcion = descripcion;
@@ -24,10 +33,6 @@ public class Compra {
 
     public Compra() {}
 
-
-
-    public int getId() {return id;}
-    public void setId(int id) {this.id = id;}
     public float getImporte() {return importe;}
     public void setImporte(float importe) {this.importe = importe;}
     public LocalDate getFecha() {return fecha;}

@@ -1,17 +1,31 @@
 package Modulo_Comercio.Dominio;
 
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.*;
 
-
+@Entity
+@Table(name = "comercio_comercio")
 public class Comercio {
-    private int rut;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "cuenta_id")
     private CuentaBancoComercio cuenta;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "comercio_id_pos")
     private List<Pos> pos;
 
-    private String password;
-    private List<Reclamos> reclamos;
+    @OneToMany(mappedBy = "comercio", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Reclamo> reclamos;
 
+    private int rut;
+    private String password;
 
     public Comercio(int rut, List<Compra> compras, CuentaBancoComercio cuenta, List<Pos> pos, String password) {
         this.rut = rut;
@@ -24,14 +38,9 @@ public class Comercio {
     public  Comercio() {}
 
     public Comercio(int rut, List<Compra> compras, CuentaBancoComercio cuenta, List<Pos> pos) {
-
         this.rut = rut;
         this.cuenta = cuenta;
         this.pos = pos;
-
-
-
-
     }
 
 
@@ -55,8 +64,8 @@ public class Comercio {
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
 
-    public List<Reclamos> getReclamos() {return reclamos;}
-    public void setReclamos(List<Reclamos> reclamos) {this.reclamos = reclamos;}
+    public List<Reclamo> getReclamos() {return reclamos;}
+    public void setReclamos(List<Reclamo> reclamos) {this.reclamos = reclamos;}
 
 
 }

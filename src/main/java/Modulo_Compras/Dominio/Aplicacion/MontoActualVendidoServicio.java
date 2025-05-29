@@ -11,10 +11,9 @@ import java.util.List;
 @ApplicationScoped
 public class MontoActualVendidoServicio  implements IMontoActualVendidoServicio {
 
-
-
     public float montoActualVendido(int rutcomercio) {
-
+        return 0;
+    }
 
 
 }

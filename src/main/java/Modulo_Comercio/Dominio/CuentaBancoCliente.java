@@ -1,7 +1,13 @@
 package Modulo_Comercio.Dominio;
 
-public class CuentaBancoCliente {
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
 
+@Entity
+@Table(name = "comercio_cuenta_banco_cliente")
+public class CuentaBancoCliente {
+    @Id
     private int numero;
     private double saldo;
 
