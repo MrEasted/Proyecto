@@ -1,4 +1,4 @@
-package Modulo_Comercio.Infraestructura.Configuracion;
+package main.java.Modulo_Comercio.Infraestructura.Configuracion;
 
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;

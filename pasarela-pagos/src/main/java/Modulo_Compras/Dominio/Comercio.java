@@ -1,8 +1,8 @@
-package Modulo_Compras.Dominio;
+package main.java.Modulo_Compras.Dominio;
 
 
 
-import Modulo_Compras.Dominio.Compra;
+import main.java.Modulo_Compras.Dominio.Compra;
 
 import java.util.List;
 

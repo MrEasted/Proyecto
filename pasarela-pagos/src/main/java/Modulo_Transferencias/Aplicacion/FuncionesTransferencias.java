@@ -1,10 +1,10 @@
-package Modulo_Transferencias.Aplicacion;
+package main.java.Modulo_Transferencias.Aplicacion;
 
-import Modulo_Transferencias.Dominio.Comercio;
-import Modulo_Transferencias.Dominio.CuentaBancoComercio;
-import Modulo_Transferencias.Dominio.Deposito;
-import Modulo_Transferencias.Dominio.Repositorio.IRepositorioTransferencia;
-import Modulo_Transferencias.Interface.Evento.In.ObserverModuloComercio;
+import main.java.Modulo_Transferencias.Dominio.Comercio;
+import main.java.Modulo_Transferencias.Dominio.CuentaBancoComercio;
+import main.java.Modulo_Transferencias.Dominio.Deposito;
+import main.java.Modulo_Transferencias.Dominio.Repositorio.IRepositorioTransferencia;
+import main.java.Modulo_Transferencias.Interface.Evento.In.ObserverModuloComercio;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 

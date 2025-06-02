@@ -1,7 +1,7 @@
-package Modulo_Monitoreo.Aplicacon;
+package main.java.Modulo_Monitoreo.Aplicacon;
 
-import Modulo_Comercio.Dominio.Comercio;
-import Modulo_Comercio.Dominio.Reclamo;
+import main.java.Modulo_Comercio.Dominio.Comercio;
+import main.java.Modulo_Comercio.Dominio.Reclamo;
 
 public interface IRealizarReclamoNotificacion {
 

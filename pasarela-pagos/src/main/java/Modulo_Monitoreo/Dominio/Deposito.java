@@ -1,4 +1,4 @@
-package Modulo_Monitoreo.Dominio;
+package main.java.Modulo_Monitoreo.Dominio;
 
 public class Deposito {
     private Date fecha;

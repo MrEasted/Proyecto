@@ -1,4 +1,4 @@
-package Modulo_Compras.Interface.DTO;
+package main.java.Modulo_Compras.Interface.DTO;
 
 public class DatosPagos {
 

@@ -1,4 +1,4 @@
-package Modulo_Compras.Aplicacion;
+package main.java.Modulo_Compras.Aplicacion;
 
 public interface IProcesarPagoServicio {
 

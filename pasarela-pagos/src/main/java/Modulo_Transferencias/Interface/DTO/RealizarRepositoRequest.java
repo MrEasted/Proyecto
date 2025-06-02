@@ -1,4 +1,4 @@
-package Modulo_Transferencias.Interface.DTO;
+package main.java.Modulo_Transferencias.Interface.DTO;
 
 import lombok.Getter;
 import lombok.Setter;

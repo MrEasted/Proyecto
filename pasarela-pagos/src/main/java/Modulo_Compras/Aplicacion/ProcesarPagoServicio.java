@@ -1,11 +1,11 @@
-package Modulo_Compras.Aplicacion;
+package main.java.Modulo_Compras.Aplicacion;
 
-import Modulo_Compras.Dominio.Comercio;
-import Modulo_Compras.Dominio.Compra;
-import Modulo_Compras.Dominio.Tarjeta;
-import Modulo_Compras.Dominio.Repositorio.IRepositorioCompras;
-import Modulo_Compras.Interface.Evento.Out.PublicadorEventoCompra;
-import Modulo_Transferencias.Interface.Evento.In.ObserverModuloComercio;
+import main.java.Modulo_Compras.Dominio.Comercio;
+import main.java.Modulo_Compras.Dominio.Compra;
+import main.java.Modulo_Compras.Dominio.Tarjeta;
+import main.java.Modulo_Compras.Dominio.Repositorio.IRepositorioCompras;
+import main.java.Modulo_Compras.Interface.Evento.Out.PublicadorEventoCompra;
+import main.java.Modulo_Transferencias.Interface.Evento.In.ObserverModuloComercio;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 

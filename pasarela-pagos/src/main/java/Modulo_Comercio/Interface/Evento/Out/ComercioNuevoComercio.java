@@ -1,4 +1,4 @@
-package Modulo_Comercio.Interface.Evento.Out;
+package main.java.Modulo_Comercio.Interface.Evento.Out;
 
 
 import lombok.AllArgsConstructor;

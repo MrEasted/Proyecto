@@ -1,4 +1,4 @@
-package Modulo_Comercio.Dominio;
+package main.java.Modulo_Comercio.Dominio;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

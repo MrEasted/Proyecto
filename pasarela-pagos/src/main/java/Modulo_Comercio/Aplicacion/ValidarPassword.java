@@ -1,4 +1,4 @@
-package Modulo_Comercio.Aplicacion;
+package main.java.Modulo_Comercio.Aplicacion;
 
 import java.util.Arrays;
 import java.util.List;

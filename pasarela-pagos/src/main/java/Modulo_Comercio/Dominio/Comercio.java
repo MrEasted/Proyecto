@@ -1,10 +1,9 @@
-package Modulo_Comercio.Dominio;
+package main.java.Modulo_Comercio.Dominio;
 
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.*;
 
 @Entity
 @Table(name = "comercio_comercio")

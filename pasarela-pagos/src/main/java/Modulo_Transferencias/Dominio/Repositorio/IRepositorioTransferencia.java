@@ -1,8 +1,8 @@
-package Modulo_Transferencias.Dominio.Repositorio;
+package main.java.Modulo_Transferencias.Dominio.Repositorio;
 
-import Modulo_Transferencias.Dominio.Comercio;
-import Modulo_Transferencias.Dominio.CuentaBancoComercio;
-import Modulo_Transferencias.Dominio.Deposito;
+import main.java.Modulo_Transferencias.Dominio.Comercio;
+import main.java.Modulo_Transferencias.Dominio.CuentaBancoComercio;
+import main.java.Modulo_Transferencias.Dominio.Deposito;
 
 
 public interface IRepositorioTransferencia {

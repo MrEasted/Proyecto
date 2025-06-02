@@ -1,4 +1,4 @@
-package Modulo_Transferencias.Dominio;
+package main.java.Modulo_Transferencias.Dominio;
 
 public class CuentaBancoCliente {
 

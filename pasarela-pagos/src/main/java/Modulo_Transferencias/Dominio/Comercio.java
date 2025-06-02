@@ -1,4 +1,4 @@
-package Modulo_Transferencias.Dominio;
+package main.java.Modulo_Transferencias.Dominio;
 
 import java.util.List;
 import java.util.stream.Collectors;
