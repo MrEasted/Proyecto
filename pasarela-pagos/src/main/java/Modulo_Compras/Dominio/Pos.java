@@ -1,4 +1,4 @@
-package Modulo_Compras.Dominio;
+package main.java.Modulo_Compras.Dominio;
 
 public class Pos {
     private int id;

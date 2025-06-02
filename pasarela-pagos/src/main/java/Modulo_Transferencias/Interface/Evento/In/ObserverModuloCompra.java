@@ -1,7 +1,7 @@
-package Modulo_Transferencias.Interface.Evento.In;
+package main.java.Modulo_Transferencias.Interface.Evento.In;
 
 
-import Modulo_Compras.Interface.Evento.Out.CompraNuevaCompra;
+import main.java.Modulo_Compras.Interface.Evento.Out.CompraNuevaCompra;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.event.Observes;
 

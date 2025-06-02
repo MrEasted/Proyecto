@@ -1,12 +1,12 @@
-package Modulo_Comercio.Aplicacion;
+package main.java.Modulo_Comercio.Aplicacion;
 
-import Modulo_Comercio.Dominio.Comercio;
-import Modulo_Comercio.Dominio.Repositorio.IRepositorioComercio;
+import main.java.Modulo_Comercio.Dominio.Comercio;
+import main.java.Modulo_Comercio.Dominio.Repositorio.IRepositorioComercio;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
 @ApplicationScoped
-public class CambioPasswordComercioServicio implements ICambioPasswordComercioServicio{
+public class CambioPasswordComercioServicio implements ICambioPasswordComercioServicio {
 
     @Inject
     IRepositorioComercio repositorio;

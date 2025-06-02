@@ -1,9 +1,9 @@
-package Modulo_Comercio.Aplicacion;
+package main.java.Modulo_Comercio.Aplicacion;
 
-import Modulo_Comercio.Dominio.Comercio;
-import Modulo_Comercio.Dominio.Compra;
-import Modulo_Comercio.Dominio.CuentaBancoComercio;
-import Modulo_Comercio.Dominio.Pos;
+import main.java.Modulo_Comercio.Dominio.Comercio;
+import main.java.Modulo_Comercio.Dominio.Compra;
+import main.java.Modulo_Comercio.Dominio.CuentaBancoComercio;
+import main.java.Modulo_Comercio.Dominio.Pos;
 
 import java.util.List;
 

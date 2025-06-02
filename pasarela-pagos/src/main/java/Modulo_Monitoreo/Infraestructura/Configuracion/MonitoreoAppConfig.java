@@ -1,4 +1,4 @@
-package Modulo_Monitoreo.Infraestructura.Configuracion;
+package main.java.Modulo_Monitoreo.Infraestructura.Configuracion;
 
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;

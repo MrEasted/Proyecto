@@ -1,6 +1,6 @@
-package Modulo_Comercio.Aplicacion;
+package main.java.Modulo_Comercio.Aplicacion;
 
-import Modulo_Comercio.Dominio.Comercio;
+import main.java.Modulo_Comercio.Dominio.Comercio;
 
 public interface IModificarComercioServicio {
 

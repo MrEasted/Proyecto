@@ -1,5 +1,5 @@
-package Modulo_Comercio.Dominio.Repositorio;
-import Modulo_Comercio.Dominio.Pos;
+package main.java.Modulo_Comercio.Dominio.Repositorio;
+import main.java.Modulo_Comercio.Dominio.Pos;
 
 public interface IRepositorioPos {
     void guardar(Pos pos);

@@ -1,7 +1,7 @@
-package Modulo_Compras.Dominio.Repositorio;
+package main.java.Modulo_Compras.Dominio.Repositorio;
 
-import Modulo_Compras.Dominio.Comercio;
-import Modulo_Compras.Dominio.Tarjeta;
+import main.java.Modulo_Compras.Dominio.Comercio;
+import main.java.Modulo_Compras.Dominio.Tarjeta;
 
 import java.time.LocalDate;
 

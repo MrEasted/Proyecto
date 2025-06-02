@@ -1,9 +1,9 @@
-package Modulo_Comercio.Interface.Evento.Out;
+package main.java.Modulo_Comercio.Interface.Evento.Out;
 
 
-import Modulo_Comercio.Dominio.Comercio;
-import Modulo_Comercio.Dominio.Pos;
-import Modulo_Comercio.Dominio.Reclamo;
+import main.java.Modulo_Comercio.Dominio.Comercio;
+import main.java.Modulo_Comercio.Dominio.Pos;
+import main.java.Modulo_Comercio.Dominio.Reclamo;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.event.Event;
 import jakarta.inject.Inject;

@@ -1,4 +1,4 @@
-package Modulo_Monitoreo.Interface.DTO;
+package main.java.Modulo_Monitoreo.Interface.DTO;
 
 public class DatosPago {
 

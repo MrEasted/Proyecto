@@ -1,9 +1,9 @@
-package Modulo_Monitoreo.Interface;
+package main.java.Modulo_Monitoreo.Interface;
 
-import Modulo_Comercio.Dominio.Comercio;
-import Modulo_Comercio.Dominio.Reclamo;
-import Modulo_Comercio.Interface.Evento.Out.ReclamoNuevo;
-import Modulo_Monitoreo.Aplicacon.IRealizarReclamoNotificacion;
+import main.java.Modulo_Comercio.Dominio.Comercio;
+import main.java.Modulo_Comercio.Dominio.Reclamo;
+import main.java.Modulo_Comercio.Interface.Evento.Out.ReclamoNuevo;
+import main.java.Modulo_Monitoreo.Aplicacon.IRealizarReclamoNotificacion;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.event.Observes;
 

@@ -1,4 +1,4 @@
-package Modulo_Comercio.Interface.DTO;
+package main.java.Modulo_Comercio.Interface.DTO;
 
 public class CambiarPasswordRequest {
     private String passwordActual;
