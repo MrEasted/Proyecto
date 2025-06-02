@@ -11,8 +11,8 @@ public class Reclamo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)  // Usamos LAZY para cargar el comercio solo cuando sea necesario
-    @JoinColumn(name = "comercio_id", referencedColumnName = "id")  // Apunta a la columna id de Comercio
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "comercio_id", referencedColumnName = "id")
     private Comercio comercio;
 
     private String reclamo;

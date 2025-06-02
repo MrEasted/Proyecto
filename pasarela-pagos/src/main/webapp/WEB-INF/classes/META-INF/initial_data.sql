@@ -9,9 +9,9 @@ INSERT INTO comercio_cuenta_banco_cliente (numero, saldo) VALUES (1003, 15000.00
 
 INSERT INTO comercio_tarjeta (numero, marca, localDate, cuenta_cliente_id) VALUES (123456, 'Visa', '2023-05-10', 1001);
 INSERT INTO comercio_tarjeta (numero, marca, localDate, cuenta_cliente_id) VALUES (789012, 'MasterCard', '2024-01-15', 1002);
-INSERT INTO comercio_tarjeta (numero, marca, localDate, cuenta_cliente_id) VALUES (345678, 'Amex', '2022-12-01', 1003);
+INSERT INTO comercio_tarjeta (numero, marca, localDate, cuenta_cliente_id) VALUES (345678, 'Prueba', '2022-12-01', 1003);
 
-INSERT INTO comercio_pos (id, activo) VALUES (1, true);
+INSERT INTO comercio_pos (id, activo, comercio_) VALUES (1, true);
 INSERT INTO comercio_pos (id, activo) VALUES (2, false);
 INSERT INTO comercio_pos (id, activo) VALUES (3, true);
 
@@ -23,6 +23,7 @@ INSERT INTO comercio_deposito (cuenta_id, fecha, importe) VALUES (2001, '2024-01
 INSERT INTO comercio_deposito (cuenta_id, fecha, importe) VALUES (2002, '2024-02-15', 15000.00);
 INSERT INTO comercio_deposito (cuenta_id, fecha, importe) VALUES (2003, '2024-03-10', 20000.00);
 
+-- TODO Modificar como se guarda la pass hash --
 INSERT INTO comercio_comercio (rut, cuenta_id, password) VALUES (11111111, 2001, 'pass123');
 INSERT INTO comercio_comercio (rut, cuenta_id, password) VALUES (22222222, 2002, 'clave456');
 INSERT INTO comercio_comercio (rut, cuenta_id, password) VALUES (33333333, 2003, 'secreta789');

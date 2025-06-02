@@ -9,7 +9,6 @@
 			crear datasource
 		Esto lo veremos con Jakarta Presistence -->
 		<!--	 <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>  -->
-
             <properties>
                 <property
                     name="jakarta.persistence.schema-generation.database.action"
