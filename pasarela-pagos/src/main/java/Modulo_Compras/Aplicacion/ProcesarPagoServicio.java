@@ -1,11 +1,11 @@
-package main.java.Modulo_Compras.Aplicacion;
+package Modulo_Compras.Aplicacion;
 
-import main.java.Modulo_Compras.Dominio.Comercio;
-import main.java.Modulo_Compras.Dominio.Compra;
-import main.java.Modulo_Compras.Dominio.Tarjeta;
-import main.java.Modulo_Compras.Dominio.Repositorio.IRepositorioCompras;
-import main.java.Modulo_Compras.Interface.Evento.Out.PublicadorEventoCompra;
-import main.java.Modulo_Transferencias.Interface.Evento.In.ObserverModuloComercio;
+import Modulo_Compras.Dominio.Comercio;
+import Modulo_Compras.Dominio.Compra;
+import Modulo_Compras.Dominio.Repositorio.IRepositorioCompras;
+import Modulo_Compras.Dominio.Tarjeta;
+import Modulo_Compras.Interface.Evento.Out.PublicadorEventoCompra;
+import Modulo_Transferencias.Interface.Evento.In.ObserverModuloComercio;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @ApplicationScoped
-public class ProcesarPagoServicio  implements IProcesarPagoServicio{
+public class ProcesarPagoServicio  implements IProcesarPagoServicio {
 
     @Inject
     private IRepositorioCompras repositorio;

@@ -1,8 +1,8 @@
-package main.java.Modulo_Monitoreo.Interface;
+package Modulo_Monitoreo.Interface;
 
-import main.java.Modulo_Monitoreo.Interface.DTO.DatosPago;
-import main.java.Modulo_Monitoreo.Interface.DTO.DatosTransferencias;
-import main.java.Modulo_Transferencias.Interface.Evento.In.ObserverModuloComercio;
+import Modulo_Monitoreo.Interface.DTO.DatosPago;
+import Modulo_Monitoreo.Interface.DTO.DatosTransferencias;
+import Modulo_Transferencias.Interface.Evento.In.ObserverModuloComercio;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;

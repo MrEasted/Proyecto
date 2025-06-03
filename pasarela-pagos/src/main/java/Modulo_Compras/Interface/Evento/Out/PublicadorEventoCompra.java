@@ -1,7 +1,7 @@
-package main.java.Modulo_Compras.Interface.Evento.Out;
+package Modulo_Compras.Interface.Evento.Out;
 
-import main.java.Modulo_Compras.Dominio.Compra;
-import main.java.Modulo_Compras.Dominio.Tarjeta;
+import Modulo_Compras.Dominio.Compra;
+import Modulo_Compras.Dominio.Tarjeta;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.enterprise.event.Event;

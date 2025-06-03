@@ -1,7 +1,6 @@
-package main.java.Modulo_Compras.Interface.Evento.Out;
+package Modulo_Compras.Interface.Evento.Out;
 
 
-import main.java.Modulo_Compras.Dominio.Tarjeta;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

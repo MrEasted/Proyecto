@@ -1,4 +1,4 @@
-package main.java.Modulo_Monitoreo.Dominio;
+package Modulo_Monitoreo.Dominio;
 
 public class Compra {
     private int idCompra;

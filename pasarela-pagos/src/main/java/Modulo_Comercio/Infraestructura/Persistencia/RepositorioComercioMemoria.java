@@ -1,8 +1,8 @@
-package main.java.Modulo_Comercio.Infraestructura.Persistencia;
+package Modulo_Comercio.Infraestructura.Persistencia;
 
-import main.java.Modulo_Comercio.Dominio.Comercio;
-import main.java.Modulo_Comercio.Dominio.Reclamo;
-import main.java.Modulo_Comercio.Dominio.Repositorio.IRepositorioComercio;
+import Modulo_Comercio.Dominio.Comercio;
+import Modulo_Comercio.Dominio.Reclamo;
+import Modulo_Comercio.Dominio.Repositorio.IRepositorioComercio;
 import jakarta.enterprise.context.ApplicationScoped;
 import java.time.LocalDate;
 import java.util.ArrayList;

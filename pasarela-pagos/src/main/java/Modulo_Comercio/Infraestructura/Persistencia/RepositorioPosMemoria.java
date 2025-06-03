@@ -1,7 +1,7 @@
-package main.java.Modulo_Comercio.Infraestructura.Persistencia;
+package Modulo_Comercio.Infraestructura.Persistencia;
 
-import main.java.Modulo_Comercio.Dominio.Pos;
-import main.java.Modulo_Comercio.Dominio.Repositorio.IRepositorioPos;
+import Modulo_Comercio.Dominio.Pos;
+import Modulo_Comercio.Dominio.Repositorio.IRepositorioPos;
 import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.HashMap;

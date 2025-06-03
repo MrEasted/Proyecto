@@ -1,6 +1,6 @@
-package main.java.Modulo_Compras.Aplicacion;
+package Modulo_Compras.Aplicacion;
 
-import main.java.Modulo_Compras.Dominio.Repositorio.IRepositorioCompras;
+import Modulo_Compras.Dominio.Repositorio.IRepositorioCompras;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 

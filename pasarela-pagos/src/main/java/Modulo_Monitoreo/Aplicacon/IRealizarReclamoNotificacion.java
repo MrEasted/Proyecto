@@ -1,11 +1,12 @@
-package main.java.Modulo_Monitoreo.Aplicacon;
+package Modulo_Monitoreo.Aplicacon;
 
-import main.java.Modulo_Comercio.Dominio.Comercio;
-import main.java.Modulo_Comercio.Dominio.Reclamo;
+
+import Modulo_Monitoreo.Dominio.Comercio;
+import Modulo_Monitoreo.Dominio.Reclamos;
 
 public interface IRealizarReclamoNotificacion {
 
-void realizarReclamoNotificacion(Comercio comercio, Reclamo reclamos);
+void realizarReclamoNotificacion(Comercio comercio, Reclamos reclamos);
 
 
 

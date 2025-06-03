@@ -1,6 +1,5 @@
-package main.java.Modulo_Monitoreo.Dominio;
+package Modulo_Monitoreo.Dominio;
 
-import main.java.Modulo_Comercio.Dominio.Comercio;
 
 import java.time.LocalDate;
 

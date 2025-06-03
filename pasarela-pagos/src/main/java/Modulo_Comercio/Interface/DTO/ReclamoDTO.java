@@ -1,4 +1,4 @@
-package main.java.Modulo_Comercio.Interface.DTO;
+package Modulo_Comercio.Interface.DTO;
 
 public class ReclamoDTO {
     private int rut;

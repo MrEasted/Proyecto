@@ -1,14 +1,12 @@
-package main.java.Modulo_Comercio.Interface.Rest;
+package Modulo_Comercio.Interface.Rest;
 
-import main.java.Modulo_Comercio.Aplicacion.IFuncionesComercio;
-
-import main.java.Modulo_Comercio.Aplicacion.IAltaComercioServicio;
-import main.java.Modulo_Comercio.Aplicacion.ICambioPasswordComercioServicio;
-import main.java.Modulo_Comercio.Dominio.*;
-import main.java.Modulo_Comercio.Interface.DTO.AltaComercioRequest;
-import main.java.Modulo_Comercio.Interface.DTO.CambiarPasswordRequest;
-import main.java.Modulo_Comercio.Aplicacion.IRealizarReclamo;
-import main.java.Modulo_Comercio.Interface.DTO.ReclamoDTO;
+import Modulo_Comercio.Aplicacion.IAltaComercioServicio;
+import Modulo_Comercio.Aplicacion.ICambioPasswordComercioServicio;
+import Modulo_Comercio.Dominio.*;
+import Modulo_Comercio.Interface.DTO.AltaComercioRequest;
+import Modulo_Comercio.Interface.DTO.CambiarPasswordRequest;
+import Modulo_Comercio.Aplicacion.IRealizarReclamo;
+import Modulo_Comercio.Interface.DTO.ReclamoDTO;
 import jakarta.inject.Inject;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.ws.rs.*;
