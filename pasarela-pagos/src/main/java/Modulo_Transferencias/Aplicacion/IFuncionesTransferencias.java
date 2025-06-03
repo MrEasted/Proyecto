@@ -1,7 +1,7 @@
-package main.java.Modulo_Transferencias.Aplicacion;
+package Modulo_Transferencias.Aplicacion;
 
-import main.java.Modulo_Transferencias.Dominio.Comercio;
-import main.java.Modulo_Transferencias.Dominio.Deposito;
+import Modulo_Transferencias.Dominio.Comercio;
+import Modulo_Transferencias.Dominio.Deposito;
 
 import java.time.LocalDate;
 import java.util.List;

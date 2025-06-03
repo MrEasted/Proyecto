@@ -1,4 +1,4 @@
-package main.java.Modulo_Transferencias.Interface.DTO;
+package Modulo_Transferencias.Interface.DTO;
 
 import java.time.LocalDate;
 

@@ -1,4 +1,4 @@
-package main.java.Modulo_Compras.Dominio;
+package Modulo_Compras.Dominio;
 
 
 import java.time.LocalDate;

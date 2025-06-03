@@ -1,10 +1,11 @@
-package main.java.Modulo_Monitoreo.Dominio;
+package Modulo_Monitoreo.Dominio;
 
 public class Comercio {
     private int rut;
     private Compra micompra;
     private CuentaBancoComercio cuentabanco;
 
+    public Comercio() {}
 
     public Comercio(int rut, Compra micompra, CuentaBancoComercio cuentabanco) {
         this.rut = rut;

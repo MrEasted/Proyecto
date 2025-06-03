@@ -1,4 +1,4 @@
-package main.java.Modulo_Compras.Aplicacion;
+package Modulo_Compras.Aplicacion;
 
 import java.time.LocalDate;
 

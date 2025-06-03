@@ -1,10 +1,10 @@
-package main.java.Modulo_Transferencias.Infraestructura.Persistencia;
+package Modulo_Transferencias.Infraestructura.Persistencia;
 
-import main.java.Modulo_Transferencias.Dominio.Comercio;
-import main.java.Modulo_Transferencias.Dominio.CuentaBancoComercio;
-import main.java.Modulo_Transferencias.Dominio.Deposito;
-import main.java.Modulo_Transferencias.Dominio.Repositorio.IRepositorioTransferencia;
-import main.java.Modulo_Transferencias.Interface.Evento.In.ObserverModuloComercio;
+import Modulo_Transferencias.Dominio.Comercio;
+import Modulo_Transferencias.Dominio.CuentaBancoComercio;
+import Modulo_Transferencias.Dominio.Deposito;
+import Modulo_Transferencias.Dominio.Repositorio.IRepositorioTransferencia;
+import Modulo_Transferencias.Interface.Evento.In.ObserverModuloComercio;
 import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.HashMap;

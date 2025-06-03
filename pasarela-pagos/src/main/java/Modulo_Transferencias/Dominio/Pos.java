@@ -1,4 +1,4 @@
-package main.java.Modulo_Transferencias.Dominio;
+package Modulo_Transferencias.Dominio;
 
 public class Pos {
     private int id;

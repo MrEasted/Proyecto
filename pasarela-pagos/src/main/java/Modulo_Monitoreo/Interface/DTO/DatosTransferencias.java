@@ -1,4 +1,4 @@
-package main.java.Modulo_Monitoreo.Interface.DTO;
+package Modulo_Monitoreo.Interface.DTO;
 
 import java.time.LocalDate;
 

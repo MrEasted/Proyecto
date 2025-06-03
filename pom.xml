@@ -12,5 +12,6 @@
     <modules>
         <module>pasarela-pagos</module>
         <module>banco-cliente</module>
+        <module>ServicioMedioPagoMock</module>
     </modules>
 </project>

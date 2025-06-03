@@ -1,5 +1,5 @@
-package main.java.Modulo_Comercio.Aplicacion;
-import main.java.Modulo_Comercio.Dominio.Repositorio.IRepositorioComercio;
+package Modulo_Comercio.Aplicacion;
+import Modulo_Comercio.Dominio.Repositorio.IRepositorioComercio;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 

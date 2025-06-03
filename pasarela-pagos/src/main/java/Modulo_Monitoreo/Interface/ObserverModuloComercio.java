@@ -1,9 +1,10 @@
-package main.java.Modulo_Monitoreo.Interface;
+package Modulo_Monitoreo.Interface;
 
-import main.java.Modulo_Comercio.Dominio.Comercio;
-import main.java.Modulo_Comercio.Dominio.Reclamo;
-import main.java.Modulo_Comercio.Interface.Evento.Out.ReclamoNuevo;
-import main.java.Modulo_Monitoreo.Aplicacon.IRealizarReclamoNotificacion;
+
+import Modulo_Comercio.Interface.Evento.Out.ReclamoNuevo;
+import Modulo_Monitoreo.Aplicacon.IRealizarReclamoNotificacion;
+import Modulo_Monitoreo.Dominio.Comercio;
+import Modulo_Monitoreo.Dominio.Reclamos;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.event.Observes;
 
@@ -22,7 +23,7 @@ public class ObserverModuloComercio {
         log.info("Evento de nuevo reclamo recibido: " + event.toString());
 
         // Crear una instancia de Reclamos y asignar los datos del evento
-        Reclamo reclamo = new Reclamo();
+        Reclamos reclamo = new Reclamos();
         reclamo.setReclamo(event.getReclamo());
         reclamo.setFecha(event.getFecha());
 

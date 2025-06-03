@@ -1,6 +1,6 @@
-package main.java.Modulo_Compras.Aplicacion;
+package Modulo_Compras.Aplicacion;
 
-import main.java.Modulo_Compras.Dominio.Comercio;
+import Modulo_Compras.Dominio.Comercio;
 
 public interface IAltaComercioServicio {
 

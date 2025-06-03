@@ -1,6 +1,5 @@
-package main.java.Modulo_Transferencias.Dominio;
+package Modulo_Transferencias.Dominio;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CuentaBancoComercio {

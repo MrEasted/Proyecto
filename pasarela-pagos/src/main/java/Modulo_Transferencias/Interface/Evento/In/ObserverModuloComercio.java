@@ -1,10 +1,10 @@
-package main.java.Modulo_Transferencias.Interface.Evento.In;
+package Modulo_Transferencias.Interface.Evento.In;
 
-import main.java.Modulo_Comercio.Interface.Evento.Out.ComercioNuevoComercio;
-import main.java.Modulo_Transferencias.Aplicacion.IFuncionesTransferencias;
-import main.java.Modulo_Transferencias.Dominio.Comercio;
-import main.java.Modulo_Transferencias.Dominio.CuentaBancoComercio;
-import main.java.Modulo_Transferencias.Dominio.Pos;
+import Modulo_Transferencias.Aplicacion.IFuncionesTransferencias;
+import Modulo_Transferencias.Dominio.Comercio;
+import Modulo_Transferencias.Dominio.CuentaBancoComercio;
+import Modulo_Transferencias.Dominio.Pos;
+import Modulo_Comercio.Interface.Evento.Out.ComercioNuevoComercio;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.event.Observes;
 import jakarta.inject.Inject;

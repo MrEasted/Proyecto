@@ -1,10 +1,10 @@
-package main.java.Modulo_Transferencias.Interface.Rest;
+package Modulo_Transferencias.Interface.Rest;
 
 
-import main.java.Modulo_Transferencias.Aplicacion.IFuncionesTransferencias;
-import main.java.Modulo_Transferencias.Interface.DTO.ObtenerDepositosRequest;
-import main.java.Modulo_Transferencias.Interface.DTO.RealizarRepositoRequest;
-import main.java.Modulo_Transferencias.Interface.Evento.In.ObserverModuloComercio;
+import Modulo_Transferencias.Aplicacion.IFuncionesTransferencias;
+import Modulo_Transferencias.Interface.DTO.ObtenerDepositosRequest;
+import Modulo_Transferencias.Interface.DTO.RealizarRepositoRequest;
+import Modulo_Transferencias.Interface.Evento.In.ObserverModuloComercio;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;

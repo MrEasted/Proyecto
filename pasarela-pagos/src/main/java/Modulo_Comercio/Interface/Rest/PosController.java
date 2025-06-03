@@ -1,8 +1,8 @@
-package main.java.Modulo_Comercio.Interface.Rest;
+package Modulo_Comercio.Interface.Rest;
 
-import main.java.Modulo_Comercio.Aplicacion.IAltaPosServicio;
-import main.java.Modulo_Comercio.Aplicacion.IModificarEstadoPosServicio;
-import main.java.Modulo_Comercio.Interface.DTO.AltaPosRequest;
+import Modulo_Comercio.Aplicacion.IAltaPosServicio;
+import Modulo_Comercio.Aplicacion.IModificarEstadoPosServicio;
+import Modulo_Comercio.Interface.DTO.AltaPosRequest;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;

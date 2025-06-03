@@ -1,5 +1,5 @@
-package main.java.Modulo_Comercio.Dominio.Repositorio;
-import main.java.Modulo_Comercio.Dominio.Comercio;
+package Modulo_Comercio.Dominio.Repositorio;
+import Modulo_Comercio.Dominio.Comercio;
 
 public interface IRepositorioComercio {
   

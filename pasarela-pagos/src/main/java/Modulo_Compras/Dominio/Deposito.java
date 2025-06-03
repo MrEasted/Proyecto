@@ -1,4 +1,4 @@
-package main.java.Modulo_Compras.Dominio;
+package Modulo_Compras.Dominio;
 
 public class Deposito {
     private Date fecha;

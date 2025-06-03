@@ -1,4 +1,4 @@
-package main.java.Modulo_Compras.Interface.DTO;
+package Modulo_Compras.Interface.DTO;
 
 public class DatosVD {
 

@@ -1,11 +1,11 @@
-package main.java.Modulo_Compras.Interface.Rest;
+package Modulo_Compras.Interface.Rest;
 
-import main.java.Modulo_Compras.Aplicacion.IProcesarPagoServicio;
-import main.java.Modulo_Compras.Aplicacion.IMontoVendido;
-import main.java.Modulo_Compras.Aplicacion.IVentasDiariasServicio;
-import main.java.Modulo_Compras.Interface.DTO.DatosPagos;
-import main.java.Modulo_Compras.Interface.DTO.DatosVD;
-import main.java.Modulo_Transferencias.Interface.Evento.In.ObserverModuloComercio;
+import Modulo_Compras.Aplicacion.IMontoVendido;
+import Modulo_Compras.Aplicacion.IProcesarPagoServicio;
+import Modulo_Compras.Aplicacion.IVentasDiariasServicio;
+import Modulo_Compras.Interface.DTO.DatosPagos;
+import Modulo_Compras.Interface.DTO.DatosVD;
+import Modulo_Transferencias.Interface.Evento.In.ObserverModuloComercio;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
