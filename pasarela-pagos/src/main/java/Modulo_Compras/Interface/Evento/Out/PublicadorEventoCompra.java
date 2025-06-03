@@ -17,7 +17,7 @@ public class PublicadorEventoCompra {
         CompraNuevaCompra evento = new CompraNuevaCompra(
 
                 //datos compra
-                compra.getIdPos(),
+                compra.getPos().getId(),
                 compra.getDescripcion(),
                 compra.getFecha(),
                 compra.getImporte(),

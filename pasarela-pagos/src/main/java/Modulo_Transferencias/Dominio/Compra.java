@@ -1,13 +1,28 @@
 package Modulo_Transferencias.Dominio;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "transferencia_compra")
 public class Compra {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "transferencia_tarjeta_id")
+    private Tarjeta tarjeta;
+
+
+
     private float importe;
     private LocalDate fecha;
     private String descripcion;
-    private Tarjeta tarjeta;
+    @OneToOne
+    @JoinColumn(name = "tranferencia_compra_pos")
     private Pos pos;
 
     public Compra(int id, int importe, LocalDate fecha, String descripcion, Tarjeta tarjeta, Pos pos) {

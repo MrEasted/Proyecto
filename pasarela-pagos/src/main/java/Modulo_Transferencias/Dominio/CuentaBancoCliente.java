@@ -1,9 +1,16 @@
 package Modulo_Transferencias.Dominio;
 
-public class CuentaBancoCliente {
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "transferencia_cuenta_banco_cliente")
+public class CuentaBancoCliente {
+    @Id
     private int numero;
     private double saldo;
+
 
 
     public CuentaBancoCliente(int numero, double saldo) {

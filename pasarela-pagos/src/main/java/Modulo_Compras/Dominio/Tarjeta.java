@@ -1,13 +1,23 @@
 package Modulo_Compras.Dominio;
 
+import Modulo_Comercio.Dominio.CuentaBancoCliente;
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
+
+@Entity
+@Table(name = "compra_tarjeta")
 public class Tarjeta {
-
+    @Id
     private int numero;
-    private String marca;
-    private LocalDate fechaVencimiento; //vencimiento
 
+    @ManyToOne
+    @JoinColumn(name = "compra_cuenta_cliente_id")
+    private CuentaBancoCliente cuentaCliente;
+
+    private String marca;
+    private LocalDate fechaVencimiento;
 
     public Tarjeta(int numero, LocalDate fechaVencimiento, String marca) {
         this.numero = numero;
@@ -17,6 +27,14 @@ public class Tarjeta {
 
     public Tarjeta() {
 
+    }
+
+    public CuentaBancoCliente getCuentaCliente() {
+        return cuentaCliente;
+    }
+
+    public void setCuentaCliente(CuentaBancoCliente cuentaCliente) {
+        this.cuentaCliente = cuentaCliente;
     }
 
     public int getNumero() {

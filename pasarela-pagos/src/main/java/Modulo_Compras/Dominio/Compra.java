@@ -1,49 +1,41 @@
 package Modulo_Compras.Dominio;
 
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
+
+@Entity
+@Table(name = "compra_compra")
 public class Compra {
-
-    private static int contadorId = 1;
-
-
-    private int idPos;
-    private String descripcion;
-    private LocalDate fecha;
-    private double importe;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "compra_tarjeta_id")
     private Tarjeta tarjeta;
 
-    public Compra(int idPos, String descripcion, LocalDate fecha, double importe,Tarjeta tarjeta) {
-        this.id = contadorId++;
-        this.idPos = idPos;
-        this.descripcion = descripcion;
-        this.fecha = fecha;
+    @ManyToOne
+    @JoinColumn(name = "compra_pos_id")
+    private Pos pos;
+
+
+    private float importe;
+    private LocalDate fecha;
+    private String descripcion;
+
+    public Compra(float importe, LocalDate fecha, String descripcion, Tarjeta tarjeta, Pos pos) {
         this.importe = importe;
-        this.tarjeta = null;
+        this.fecha = fecha;
+        this.descripcion = descripcion;
+        this.tarjeta = tarjeta;
+        this.pos = pos;
     }
 
+    public Compra() {}
 
-    public Compra() {
-
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getIdPos() {
-        return idPos;
-    }
-
-    public void setIdPos(int idPos) {
-        this.idPos = idPos;
-    }
 
     public String getDescripcion() {
         return descripcion;
@@ -61,19 +53,36 @@ public class Compra {
         this.fecha = fecha;
     }
 
-    public double getImporte() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public float getImporte() {
         return importe;
     }
 
-    public void setImporte(double importe) {
+    public void setImporte(float importe) {
         this.importe = importe;
+    }
+
+    public Pos getPos() {
+        return pos;
+    }
+
+    public void setPos(Pos pos) {
+        this.pos = pos;
     }
 
     public Tarjeta getTarjeta() {
         return tarjeta;
     }
+
     public void setTarjeta(Tarjeta tarjeta) {
         this.tarjeta = tarjeta;
     }
-
 }
+

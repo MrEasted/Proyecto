@@ -1,8 +1,16 @@
 package Modulo_Transferencias.Dominio;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "transferencia_deposito")
 public class Deposito {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
     private LocalDate fecha;
     private float importe;
 
@@ -14,8 +22,13 @@ public class Deposito {
     public Deposito() {
     }
 
+    public long getId() {
+        return id;
+    }
 
-
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public LocalDate getFecha() {
         return fecha;

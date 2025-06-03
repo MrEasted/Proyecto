@@ -1,7 +1,16 @@
 package Modulo_Transferencias.Dominio;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "transferencia_pos")
 public class Pos {
+    @Id
     private int id;
+    @Column(columnDefinition = "TINYINT(1)")
     private boolean activo;
 
     public Pos(int id, boolean activo) {
