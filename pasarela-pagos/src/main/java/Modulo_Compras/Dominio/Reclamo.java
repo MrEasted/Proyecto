@@ -1,41 +1,41 @@
-package Modulo_Monitoreo.Dominio;
-
+package Modulo_Compras.Dominio;
 
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
-
 @Entity
-@Table(name = "monitoreo_reclamos")
-public class Reclamos {
+@Table(name = "compra_reclamos")
+public class Reclamo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "monitoreo_comercio_id", referencedColumnName = "id")
+    @JoinColumn(name = "compra_comercio_id", referencedColumnName = "id")
     private Comercio comercio;
 
     private String reclamo;
     private LocalDate fecha;
 
-    public Reclamos() {
+    public Reclamo() {
     }
 
-    public Reclamos(String reclamo, LocalDate fecha, Comercio comercio) {
-        this.reclamo = reclamo;
-        this.fecha = fecha;
+    public Reclamo(Comercio comercio, String reclamo) {
         this.comercio = comercio;
-    }
-
-
-    public Comercio getComercio() {
-        return comercio;
+        this.reclamo = reclamo;
     }
 
     public void setComercio(Comercio comercio) {
         this.comercio = comercio;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public Comercio getComercio() {
+        return comercio;
     }
 
     public LocalDate getFecha() {
@@ -44,10 +44,6 @@ public class Reclamos {
 
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
-    }
-
-    public long getId() {
-        return id;
     }
 
     public void setId(long id) {

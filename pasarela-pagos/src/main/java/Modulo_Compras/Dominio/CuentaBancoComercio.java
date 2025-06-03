@@ -1,10 +1,17 @@
 package Modulo_Compras.Dominio;
 
+import jakarta.persistence.*;
+
 import java.util.List;
 
+@Entity
+@Table(name = "compra_cuenta_banco_comercio")
 public class CuentaBancoComercio {
-
+    @Id
     private int nroCuenta;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "compra_cuenta_id")
     private List<Deposito> depositos;
 
 

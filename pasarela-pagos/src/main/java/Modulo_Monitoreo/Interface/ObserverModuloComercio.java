@@ -7,6 +7,7 @@ import Modulo_Monitoreo.Dominio.Comercio;
 import Modulo_Monitoreo.Dominio.Reclamos;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.event.Observes;
+import jakarta.inject.Inject;
 
 import java.util.logging.Logger;
 
@@ -14,7 +15,7 @@ import java.util.logging.Logger;
 public class ObserverModuloComercio {
 
 
-
+    @Inject
     IRealizarReclamoNotificacion notificacion;
 
     private static final Logger log = Logger.getLogger(ObserverModuloComercio.class.getName());
