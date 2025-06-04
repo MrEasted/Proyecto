@@ -4,58 +4,60 @@ import Modulo_Transferencias.Dominio.Comercio;
 import Modulo_Transferencias.Dominio.CuentaBancoComercio;
 import Modulo_Transferencias.Dominio.Deposito;
 import Modulo_Transferencias.Dominio.Repositorio.IRepositorioTransferencia;
-import Modulo_Transferencias.Interface.Evento.In.ObserverModuloComercio;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.logging.Logger;
 
 @ApplicationScoped
 public class RepositorioTransferencia implements IRepositorioTransferencia {
 
-
-    private static final Logger log = Logger.getLogger(String.valueOf(ObserverModuloComercio.class));
-
-    private final Map<Integer, Comercio> comercios = new HashMap<>();
-
-
+    //JPA
+    @PersistenceContext(unitName = "tallerjava")
+    EntityManager em;
 
     @Override
     public void guardar(Comercio comercio) {
-        log.info("Guardando comercio: " + comercio.getRut());
-        comercios.put(comercio.getRut(), comercio);
-        log.info("Total comercios guardados: " + comercios.size());
+        em.merge(comercio);
     }
 
 
     @Override
     public boolean existe(int rut) {
-        return comercios.containsKey(rut);
+
+        return em.find(Comercio.class, rut) != null;
+
     }
 
     @Override
     public Comercio obtener(int rut) {
-        Comercio c = comercios.get(rut);
-        log.info("Buscando comercio con rut: " + rut + " - Encontrado: " + (c != null));
-        return c;
+
+        return em.find(Comercio.class, rut);
+
     }
 
     @Override
     public void guardoTransferencia(Comercio comercio, Deposito dep, CuentaBancoComercio cuenta) {
 
-        List<Deposito> depositos = cuenta.getDepositos();
+        //si tiene lista le añado deposito
+        if (comercio.getCuenta().getDepositos() != null) {
 
-        if (depositos.isEmpty()) {
+            List<Deposito> depositos = comercio.getCuenta().getDepositos();
             depositos.add(dep);
+            comercio.getCuenta().setDepositos(depositos);
+
+        }else{ //sino tiene lista le creo una con el dep
+
+            List<Deposito> depositos = new ArrayList<>();
+            depositos.add(dep);
+            comercio.getCuenta().setDepositos(depositos);
+
         }
 
-
-    //ANIADO EL DEPOSITO A LA LISTA DE LA CUENTA DE BANCO
-
-
-
+        //ACTUALIZO ESE COMERCIO EN MI REPOSITORIO
+        em.merge(comercio);
 
     }
 

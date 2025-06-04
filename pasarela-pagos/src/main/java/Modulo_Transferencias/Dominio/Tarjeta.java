@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
-@Entity
+@Entity(name = "Transferencia_Tarjeta")
 @Table(name = "transferencia_tarjeta")
 public class Tarjeta {
 

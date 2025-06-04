@@ -30,6 +30,8 @@ public class MonitoreoController {
             log.info("Fecha deposito : " + request.getRutComercio());
             log.info("Importe deposito : " + request.getImporte());
 
+            //FALTA IMPLEMENTAR APLICACION/SERVICIO Y QUE ESE SERVICIO LO GUARDE EN REPOSITORIO
+
             return Response.ok().build();
         } catch (RuntimeException e) {
             return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
@@ -58,6 +60,8 @@ public class MonitoreoController {
             log.info("Notificacion del Pago- : Rut: " + request.getIdComercio());
             log.info("Notificacion del Pago- : idCompra: " + request.getIdCompra());
             log.info("Notificacion del Pago- : Notificacion: " + request.getNotificacion());
+
+            //FALTA IMPLEMENTAR APLICACION/SERVICIO Y QUE ESE SERVICIO LO GUARDE EN REPOSITORIO
 
 
             return Response.ok().build();

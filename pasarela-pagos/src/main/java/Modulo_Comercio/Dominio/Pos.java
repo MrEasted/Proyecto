@@ -2,7 +2,7 @@ package Modulo_Comercio.Dominio;
 
 import jakarta.persistence.*;
 
-@Entity
+@Entity(name = "Comercio_Pos")
 @Table(name = "comercio_pos")
 public class Pos {
     @Id

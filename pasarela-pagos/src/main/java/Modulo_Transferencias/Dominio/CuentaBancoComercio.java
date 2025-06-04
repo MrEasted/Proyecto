@@ -4,9 +4,10 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
-@Entity
+@Entity(name = "Transferencia_Cuenta_Banco_Comercio")
 @Table(name = "transferencia_cuenta_banco_comercio")
 public class CuentaBancoComercio {
+
     @Id
     private int nroCuenta;
 

@@ -32,21 +32,13 @@ public class ProcesarPagoServicio  implements IProcesarPagoServicio {
     PublicadorEventoCompra publicadorEvento;
 
 
-    private static final Logger log = Logger.getLogger(String.valueOf(ObserverModuloComercio.class));
 
     @Override
     public void ProcesarPago(int Pos,double Monto, int tarjeta, String marcaTarjeta, String descripcionCompra,int rutComercio,int cantidad) {
 
-
-        log.info("Procesar Pago");
-
-        log.info("Pos = "+Pos);
-
-
         //existe comercio?
         if (repositorio.existe(rutComercio)) {
 
-            log.info("existe un comercio -ProcesarPago");
 
             LocalDate fechaVencimientoT = LocalDate.of(2026, 5, 22);
 
@@ -54,26 +46,23 @@ public class ProcesarPagoServicio  implements IProcesarPagoServicio {
             LocalDate fechaVencimientoC = LocalDate.now();
 
             //Creo tarjeta y la guardo en mi repositorio
-            log.info("Creando tarjeta... -ProcesarPago");
             Tarjeta t = new Tarjeta(tarjeta, fechaVencimientoT, marcaTarjeta);
 
-            log.info(" Datos tarjeta: fechaV:  " + t.getFechaVencimiento() + " Marca: " + t.getMarca() + "  numeroTarjeta: " + t.getNumero());
-
+            //GUARDAR TARJETA
             repositorio.guardarTarjeta(t);
 
-            log.info("01 -ProcesarPago");
 
 
             //creo compra
-            Compra compra = new Compra(Pos, descripcionCompra, fechaVencimientoC, Monto, t);
+            Compra compra = new Compra(Monto,fechaVencimientoC, descripcionCompra,t , Pos);
+
+
           try {
 
               boolean bol = ValidoCompra(t, compra.getId(), rutComercio);
               if (bol == true) {
                   // Guardar la compra en la lista del comercio
                   Comercio comercio = repositorio.obtener(rutComercio);
-
-                  log.info("1 -ProcesarPago");
 
                   //si ya tiene o no compras
                   if (comercio.getCompras() == null) {
@@ -89,19 +78,14 @@ public class ProcesarPagoServicio  implements IProcesarPagoServicio {
                   }
 
 
-                  log.info("2 -ProcesarPago");
 
                   // Si es necesario, actualizar el comercio en el repositorio
                   repositorio.guardar(comercio);
 
-                  log.info("2.5 -ProcesarPago");
 
                   //Llamo publicador para publicar datos compra y rut del comercio.
                   publicadorEvento.publicarNuevaCompra(compra, rutComercio, t);
 
-                  log.info("3 -ProcesarPago");
-
-                  //
 
               }
 
@@ -111,7 +95,6 @@ public class ProcesarPagoServicio  implements IProcesarPagoServicio {
 
         }else {
 
-            log.info("No existe un comercio -ProcesarPago");
 
         }
     }
@@ -143,10 +126,11 @@ public class ProcesarPagoServicio  implements IProcesarPagoServicio {
         boolean compraExitosa = Boolean.parseBoolean(response.body());
 
         if (compraExitosa) {
-            log.info("Compra validada por la API externa");
+
             return true;
+
         } else {
-            log.warning(" Compra rechazada por la API externa");
+
             return false;
         }
     }

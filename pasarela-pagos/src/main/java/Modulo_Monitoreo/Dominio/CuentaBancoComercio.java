@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
-@Entity
+@Entity(name = "Monitoreo_Cuenta_Banco_Comercio")
 @Table(name = "monitoreo_cuenta_banco_comercio")
 public class CuentaBancoComercio {
     @Id

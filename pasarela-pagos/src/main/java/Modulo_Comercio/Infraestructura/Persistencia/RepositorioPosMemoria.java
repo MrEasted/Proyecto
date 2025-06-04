@@ -3,29 +3,37 @@ package Modulo_Comercio.Infraestructura.Persistencia;
 import Modulo_Comercio.Dominio.Pos;
 import Modulo_Comercio.Dominio.Repositorio.IRepositorioPos;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
-import java.util.HashMap;
-import java.util.Map;
 
 @ApplicationScoped
 public class RepositorioPosMemoria implements IRepositorioPos {
 
-    private final Map<Integer, Pos> listaPos = new HashMap<>();
+
+    @PersistenceContext(unitName = "tallerjava")
+    EntityManager em;
 
     @Override
     public void guardar(Pos pos) {
-        listaPos.put(pos.getId(), pos);
+
+        em.merge(pos);
+
     }
 
     @Override
     public boolean existe(int id) {
-        return listaPos.containsKey(id);
+
+        return em.find(Pos.class, id) != null;
+
     }
 
 
     @Override
     public Pos obtenerPosPorId(int id) {
-        return listaPos.get(id);
+
+        return em.find(Pos.class, id);
+
     }
 
 }

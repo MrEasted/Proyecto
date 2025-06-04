@@ -5,6 +5,8 @@ import Modulo_Compras.Dominio.Compra;
 import Modulo_Compras.Dominio.Repositorio.IRepositorioCompras;
 import Modulo_Compras.Dominio.Tarjeta;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -14,50 +16,65 @@ import java.util.Map;
 @ApplicationScoped
 public class RepositorioCompras implements IRepositorioCompras {
 
-
-    private final Map<Integer, Comercio> comercios = new HashMap<>();
-
-    private final Map<Integer, Tarjeta> tarjetas = new HashMap<>();
+    //JPA
+    @PersistenceContext(unitName = "tallerjava")
+    EntityManager em;
 
     @Override
     public void guardar(Comercio comercio) {
-        comercios.put(comercio.getRut(), comercio);
+
+        em.persist(comercio);
+
     }
 
     @Override
     public boolean existe(int rut) {
-        return comercios.containsKey(rut);
+
+        return em.contains(em.find(Comercio.class, rut));
+
     }
 
     @Override
     public Comercio obtener(int rut) {
-        return comercios.get(rut);
+
+        return em.find(Comercio.class, rut);
+
     }
 
     //tarjetas y compras
     @Override
     public void guardarTarjeta(Tarjeta tarjeta){
-        tarjetas.put(tarjeta.getNumero(), tarjeta);
+
+        em.merge(tarjeta);
+
     }
 
     @Override
     public float montoVendidoactual(int rut) {
 
-        Comercio comercio = comercios.get(rut);
-        List<Compra> compras = comercio.getCompras();
-        LocalDate hoy = LocalDate.now();
+        Comercio comercio = em.find(Comercio.class, rut);
 
-        float total = (float) compras.stream()
-                .filter(compra -> compra.getFecha().equals(hoy))
-                .mapToDouble(Compra::getImporte)
-                .sum();
+        if (comercio != null) {
 
-        return total;
+            List<Compra> compras = comercio.getCompras();
+            LocalDate hoy = LocalDate.now();
+
+            float total = (float) compras.stream()
+                    .filter(compra -> compra.getFecha().equals(hoy))
+                    .mapToDouble(Compra::getImporte)
+                    .sum();
+
+            return total;
+        }
+
+        return 0;
+
     }
 
 
     public float montoVendidoEntreFechas(int rut, LocalDate fechaInicio, LocalDate fechaFin) {
-        Comercio comercio = comercios.get(rut);
+
+        Comercio comercio = em.find(Comercio.class, rut);
 
         List<Compra> compras = comercio.getCompras();
 
@@ -70,7 +87,7 @@ public class RepositorioCompras implements IRepositorioCompras {
                 .mapToDouble(Compra::getImporte)
                 .sum();
 
-
         return total;
+
     }
 }

@@ -4,9 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Entity
+@Entity(name = "Compra_Cuenta_Banco_Cliente")
 @Table(name = "compra_cuenta_banco_cliente")
 public class CuentaBancoCliente {
+
     @Id
     private int numero;
     private double saldo;

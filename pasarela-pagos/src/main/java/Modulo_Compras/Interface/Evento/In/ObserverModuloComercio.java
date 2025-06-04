@@ -38,7 +38,7 @@ public class ObserverModuloComercio {
         Comercio comercio = new Comercio();
         comercio.setRut(event.getRut());
         comercio.setPos(posList);
-        comercio.setCuentabanco(cuenta);
+        comercio.setCuenta(cuenta);
 
 
         altaComercioServicio.AltaComercio(comercio);
