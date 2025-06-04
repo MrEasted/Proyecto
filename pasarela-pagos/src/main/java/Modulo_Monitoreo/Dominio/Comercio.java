@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
-@Entity
+@Entity (name = "Monitoreo_Comercio")
 @Table(name = "monitoreo_comercio")
 public class Comercio {
     @Id
@@ -17,7 +17,7 @@ public class Comercio {
     private CuentaBancoComercio cuenta;
 
 
-    @OneToMany(mappedBy = "monitoreo_comercio", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "comercio", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reclamos> reclamos;
 
     private int rut;

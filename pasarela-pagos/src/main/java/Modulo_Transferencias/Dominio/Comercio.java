@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
-@Entity
+@Entity(name = "Transferencia_Comercio")
 @Table(name = "transferencia_comercio")
 public class Comercio {
 
@@ -23,7 +23,8 @@ public class Comercio {
     @JoinColumn(name = "transferencia_cuenta_id")
     private CuentaBancoComercio cuenta;
 
-
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "comercio_id_pos")
     private List<Pos> pos;
 
     public Comercio(int rut, List<Compra> compras, CuentaBancoComercio cuenta, List<Pos> pos) {

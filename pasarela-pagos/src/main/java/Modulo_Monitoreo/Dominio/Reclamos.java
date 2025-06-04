@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 
-@Entity
+@Entity(name = "Monitoreo_Reclamos")
 @Table(name = "monitoreo_reclamos")
 public class Reclamos {
     @Id
@@ -18,6 +18,7 @@ public class Reclamos {
     private Comercio comercio;
 
     private String reclamo;
+
     private LocalDate fecha;
 
     public Reclamos() {

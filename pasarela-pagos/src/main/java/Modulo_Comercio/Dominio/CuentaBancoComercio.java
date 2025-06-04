@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@Entity (name = "Comercio_Cuenta_Banco_Comercio")
 @Table(name = "comercio_cuenta_banco_comercio")
 public class CuentaBancoComercio {
     @Id

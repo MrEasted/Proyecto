@@ -15,11 +15,9 @@ import java.util.Map;
 @ApplicationScoped
 public class RepositorioComercioMemoria implements IRepositorioComercio {
 
+    //JPA
     @PersistenceContext(unitName = "tallerjava")
     EntityManager em;
-
-    private final Map<Integer, Comercio> comercios = new HashMap<>();
-
 
     @Override
     public void guardar(Comercio comercio) {
@@ -35,7 +33,9 @@ public class RepositorioComercioMemoria implements IRepositorioComercio {
 
     @Override
     public boolean existe(int rut) {
-        return comercios.containsKey(rut);
+
+        return em.contains(em.find(Comercio.class, rut));
+
     }
 
     @Override
@@ -47,7 +47,6 @@ public class RepositorioComercioMemoria implements IRepositorioComercio {
         }
         em.merge(comercio);
     }
-
 
 
     @Override
@@ -66,9 +65,5 @@ public class RepositorioComercioMemoria implements IRepositorioComercio {
         co.getReclamos().add(recla);
         em.merge(co);
     }
-
-
-
-
 
 }

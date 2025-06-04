@@ -5,7 +5,8 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+// EL NOMBRE DE LA ENTIDAD NO PUEDE SER IGUAL A LAS OTRAS ENTIDADES
+@Entity (name = "Comercio_Comercio")
 @Table(name = "comercio_comercio")
 public class Comercio {
     @Id

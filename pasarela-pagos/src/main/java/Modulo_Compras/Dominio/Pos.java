@@ -6,7 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Entity
+@Entity(name = "Compra_Pos")
 @Table(name = "compra_pos")
 public class Pos {
     @Id
@@ -20,6 +20,9 @@ public class Pos {
     }
 
     public Pos(){}
+
+    public Pos(Integer integer) {
+    }
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }

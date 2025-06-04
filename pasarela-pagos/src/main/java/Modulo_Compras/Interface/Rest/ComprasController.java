@@ -114,10 +114,25 @@ public class ComprasController {
 //            "fechaFin": "2024-05-17"
 //    }
 
+
+    //DABA ERROR USAR LOCALDATE EN JAX
+//    @GET
+//    @Path("/montoVendidoEntreFechas")
+//    @Produces(MediaType.TEXT_PLAIN)
+//    public float montoVendidoEntreFechas(@QueryParam("rut") int rut, @QueryParam("fechaInicio") LocalDate fechaInicio,  @QueryParam("fechaFin") LocalDate fechaFin) {
+//        return montoActualVendidoServicio.montoVendidoentreFechas(rut, fechaInicio, fechaFin);
+//    }
+
     @GET
     @Path("/montoVendidoEntreFechas")
     @Produces(MediaType.TEXT_PLAIN)
-    public float montoVendidoEntreFechas(@QueryParam("rut") int rut, @QueryParam("fechaInicio") LocalDate fechaInicio,  @QueryParam("fechaFin") LocalDate fechaFin) {
+    public float montoVendidoEntreFechas(
+            @QueryParam("rut") int rut,
+            @QueryParam("fechaInicio") String fechaInicioStr,
+            @QueryParam("fechaFin") String fechaFinStr) {
+
+        LocalDate fechaInicio = LocalDate.parse(fechaInicioStr);
+        LocalDate fechaFin = LocalDate.parse(fechaFinStr);
         return montoActualVendidoServicio.montoVendidoentreFechas(rut, fechaInicio, fechaFin);
     }
 

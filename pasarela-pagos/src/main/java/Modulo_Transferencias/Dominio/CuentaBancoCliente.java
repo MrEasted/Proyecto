@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Entity
+@Entity(name = "Transferencia_Cuenta_Banco_Cliente")
 @Table(name = "transferencia_cuenta_banco_cliente")
 public class CuentaBancoCliente {
     @Id

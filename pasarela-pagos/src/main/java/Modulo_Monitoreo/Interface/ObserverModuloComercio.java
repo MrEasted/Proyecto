@@ -5,6 +5,7 @@ import Modulo_Comercio.Interface.Evento.Out.ReclamoNuevo;
 import Modulo_Monitoreo.Aplicacon.IRealizarReclamoNotificacion;
 import Modulo_Monitoreo.Dominio.Comercio;
 import Modulo_Monitoreo.Dominio.Reclamos;
+import Modulo_Monitoreo.Dominio.Repositorio.IRepositorioMonitoreo;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.event.Observes;
 import jakarta.inject.Inject;
@@ -17,6 +18,9 @@ public class ObserverModuloComercio {
 
     @Inject
     IRealizarReclamoNotificacion notificacion;
+
+    @Inject
+    IRepositorioMonitoreo repositorioMonitoreo;
 
     private static final Logger log = Logger.getLogger(ObserverModuloComercio.class.getName());
 
@@ -36,6 +40,10 @@ public class ObserverModuloComercio {
         reclamo.setComercio(comercio);
 
         // Guardar el reclamo en el sistema de transferencias
+        repositorioMonitoreo.GuardarReclamo(reclamo);
+
+
+        //TIRAR EVENTO ??? NO HACE NADA
         notificacion.realizarReclamoNotificacion(comercio, reclamo);
 
         log.info("Reclamo almacenado en el sistema de transferencias para el comercio: " + comercio.getRut());

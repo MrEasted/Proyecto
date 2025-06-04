@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 
-@Entity
+@Entity(name = "Compra_Compra")
 @Table(name = "compra_compra")
 public class Compra {
     @Id
@@ -17,16 +17,14 @@ public class Compra {
     @JoinColumn(name = "compra_tarjeta_id")
     private Tarjeta tarjeta;
 
-    @ManyToOne
-    @JoinColumn(name = "compra_pos_id")
-    private Pos pos;
+    private int pos;
 
 
-    private float importe;
+    private double importe;
     private LocalDate fecha;
     private String descripcion;
 
-    public Compra(float importe, LocalDate fecha, String descripcion, Tarjeta tarjeta, Pos pos) {
+    public Compra(double importe, LocalDate fecha, String descripcion, Tarjeta tarjeta, int pos) {
         this.importe = importe;
         this.fecha = fecha;
         this.descripcion = descripcion;
@@ -61,19 +59,19 @@ public class Compra {
         this.id = id;
     }
 
-    public float getImporte() {
+    public double getImporte() {
         return importe;
     }
 
-    public void setImporte(float importe) {
+    public void setImporte(double importe) {
         this.importe = importe;
     }
 
-    public Pos getPos() {
+    public int getPos() {
         return pos;
     }
 
-    public void setPos(Pos pos) {
+    public void setPos(int pos) {
         this.pos = pos;
     }
 
