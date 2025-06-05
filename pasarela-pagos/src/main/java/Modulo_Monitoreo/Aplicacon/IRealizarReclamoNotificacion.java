@@ -6,7 +6,7 @@ import Modulo_Monitoreo.Dominio.Reclamos;
 
 public interface IRealizarReclamoNotificacion {
 
-void realizarReclamoNotificacion(Comercio comercio, Reclamos reclamos);
+void realizarReclamoNotificacion(int comercio, Reclamos reclamos);
 
 
 

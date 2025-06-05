@@ -1,5 +1,6 @@
 package Modulo_Comercio.Dominio.Repositorio;
 import Modulo_Comercio.Dominio.Comercio;
+import Modulo_Comercio.Dominio.Reclamo;
 
 public interface IRepositorioComercio {
   
@@ -9,8 +10,9 @@ public interface IRepositorioComercio {
     Comercio obtener(int rut);
     void actualizar(Comercio comercio);
 
-    void realizarReclamo(String reclamo, int comercio);
+    void realizarReclamo(Comercio comercio, Reclamo relamo);
 
+    Comercio obtenerSiExiste(int rut);
+    boolean existeConConsulta(int rut);
 
-  
 }

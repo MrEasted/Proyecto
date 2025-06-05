@@ -4,8 +4,10 @@ import Modulo_Compras.Dominio.Comercio;
 import Modulo_Compras.Dominio.Compra;
 import Modulo_Compras.Dominio.Repositorio.IRepositorioCompras;
 import Modulo_Compras.Dominio.Tarjeta;
+import jakarta.ejb.Stateless;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 
 import java.time.LocalDate;
@@ -13,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@ApplicationScoped
+@Stateless
 public class RepositorioCompras implements IRepositorioCompras {
 
     //JPA
@@ -52,8 +54,7 @@ public class RepositorioCompras implements IRepositorioCompras {
     @Override
     public float montoVendidoactual(int rut) {
 
-        Comercio comercio = em.find(Comercio.class, rut);
-
+        Comercio comercio = this.obtenerSiExiste(rut);
         if (comercio != null) {
 
             List<Compra> compras = comercio.getCompras();
@@ -74,7 +75,7 @@ public class RepositorioCompras implements IRepositorioCompras {
 
     public float montoVendidoEntreFechas(int rut, LocalDate fechaInicio, LocalDate fechaFin) {
 
-        Comercio comercio = em.find(Comercio.class, rut);
+        Comercio comercio = this.obtenerSiExiste(rut);
 
         List<Compra> compras = comercio.getCompras();
 
@@ -89,5 +90,27 @@ public class RepositorioCompras implements IRepositorioCompras {
 
         return total;
 
+    }
+
+
+    @Override
+    public boolean existeConConsulta(int rut) {
+        Long count = em.createQuery(
+                        "SELECT COUNT(c) FROM Compra_Comercio c WHERE c.rut = :rut", Long.class)
+                .setParameter("rut", rut)
+                .getSingleResult();
+        return count > 0;
+    }
+
+    @Override
+    public Comercio obtenerSiExiste(int rut) {
+        try {
+            return em.createQuery(
+                            "SELECT c FROM Compra_Comercio c WHERE c.rut = :rut", Comercio.class)
+                    .setParameter("rut", rut)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 }
