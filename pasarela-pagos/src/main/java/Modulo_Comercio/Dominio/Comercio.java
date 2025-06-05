@@ -1,17 +1,20 @@
 package Modulo_Comercio.Dominio;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 // EL NOMBRE DE LA ENTIDAD NO PUEDE SER IGUAL A LAS OTRAS ENTIDADES
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity (name = "Comercio_Comercio")
 @Table(name = "comercio_comercio")
 public class Comercio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "cuenta_id")

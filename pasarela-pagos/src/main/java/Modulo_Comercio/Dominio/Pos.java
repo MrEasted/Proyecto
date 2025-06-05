@@ -1,7 +1,10 @@
 package Modulo_Comercio.Dominio;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity(name = "Comercio_Pos")
 @Table(name = "comercio_pos")
 public class Pos {

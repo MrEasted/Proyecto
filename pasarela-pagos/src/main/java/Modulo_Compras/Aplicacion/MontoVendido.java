@@ -14,7 +14,7 @@ public class MontoVendido implements IMontoVendido {
     IRepositorioCompras repositorioCompras;
 
     public float montoActualVendido(int rutcomercio) {
-        if (repositorioCompras.existe(rutcomercio)) {
+        if (repositorioCompras.existeConConsulta(rutcomercio)) {
             float res = repositorioCompras.montoVendidoactual(rutcomercio);
 
             if (res == 0) {
@@ -28,7 +28,7 @@ public class MontoVendido implements IMontoVendido {
     }
 
     public float montoVendidoentreFechas(int rutcomercio, LocalDate fechaInicio, LocalDate fechaFin) {
-       if(repositorioCompras.existe(rutcomercio)) {
+       if(repositorioCompras.existeConConsulta(rutcomercio)) {
         float res = repositorioCompras.montoVendidoEntreFechas(rutcomercio, fechaInicio, fechaFin);
         if (res == 0){
             throw new RuntimeException("No hay compras en ese periodo");

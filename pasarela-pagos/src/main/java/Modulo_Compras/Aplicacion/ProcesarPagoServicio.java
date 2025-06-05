@@ -10,6 +10,8 @@ import Modulo_Transferencias.Interface.Evento.In.ObserverModuloComercio;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 
 
 import java.io.IOException;
@@ -22,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+//@Slf4j
 @ApplicationScoped
 public class ProcesarPagoServicio  implements IProcesarPagoServicio {
 
@@ -31,14 +34,14 @@ public class ProcesarPagoServicio  implements IProcesarPagoServicio {
     @Inject
     PublicadorEventoCompra publicadorEvento;
 
+    private static final Logger log = Logger.getLogger(String.valueOf(ObserverModuloComercio.class));
 
-
+    @Transactional/*"Todo lo que pase dentro de este método se hace como una sola unidad de trabajo. Si algo falla, se revierte todo."*/
     @Override
     public void ProcesarPago(int Pos,double Monto, int tarjeta, String marcaTarjeta, String descripcionCompra,int rutComercio,int cantidad) {
 
         //existe comercio?
-        if (repositorio.existe(rutComercio)) {
-
+        if (repositorio.existeConConsulta(rutComercio)) {
 
             LocalDate fechaVencimientoT = LocalDate.of(2026, 5, 22);
 
@@ -58,24 +61,22 @@ public class ProcesarPagoServicio  implements IProcesarPagoServicio {
 
 
           try {
-
               boolean bol = ValidoCompra(t, compra.getId(), rutComercio);
-              if (bol == true) {
+              if (bol) {
                   // Guardar la compra en la lista del comercio
-                  Comercio comercio = repositorio.obtener(rutComercio);
+                  Comercio comercio = repositorio.obtenerSiExiste(rutComercio);
 
                   //si ya tiene o no compras
                   if (comercio.getCompras() == null) {
-
                       List<Compra> compras = new ArrayList<>();
 
                       compras.add(compra);
                       comercio.setCompras(compras);
                   } else {
-
                       comercio.getCompras().add(compra);
 
                   }
+
 
 
 
@@ -87,6 +88,8 @@ public class ProcesarPagoServicio  implements IProcesarPagoServicio {
                   publicadorEvento.publicarNuevaCompra(compra, rutComercio, t);
 
 
+              }else {
+                  log.info("COMPRA RECHAZADA");
               }
 
           }catch (Exception e) {
@@ -95,6 +98,7 @@ public class ProcesarPagoServicio  implements IProcesarPagoServicio {
 
         }else {
 
+            log.info("NO EXISTE EL COMERCIO");
 
         }
     }
@@ -114,7 +118,7 @@ public class ProcesarPagoServicio  implements IProcesarPagoServicio {
 
         // Construir la solicitud HTTP
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:8080/MedioPagoApi/Medio/PagoARealizar"))
+                .uri(URI.create("http://localhost:8080/MedioPago/MedioPagoApi/Medio/PagoARealizar"))
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(json))
                 .build();
@@ -125,7 +129,9 @@ public class ProcesarPagoServicio  implements IProcesarPagoServicio {
         // Analizar la respuesta
         boolean compraExitosa = Boolean.parseBoolean(response.body());
 
-        if (compraExitosa) {
+
+
+        if (compraExitosa == true) {
 
             return true;
 

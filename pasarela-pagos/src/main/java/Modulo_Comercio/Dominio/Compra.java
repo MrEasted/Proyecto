@@ -1,15 +1,17 @@
 package Modulo_Comercio.Dominio;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity (name = "Comercio_Compra")
 @Table(name = "comercio_compra")
 public class Compra {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     @ManyToOne
     @JoinColumn(name = "tarjeta_id")
@@ -32,6 +34,14 @@ public class Compra {
     }
 
     public Compra() {}
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public float getImporte() {return importe;}
     public void setImporte(float importe) {this.importe = importe;}

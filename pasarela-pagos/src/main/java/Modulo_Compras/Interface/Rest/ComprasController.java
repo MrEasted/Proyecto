@@ -35,6 +35,10 @@ public class ComprasController {
     private static final Logger log = Logger.getLogger(String.valueOf(ObserverModuloComercio.class));
 
     @POST
+    @Path("/NuevoPago")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @RequestScoped
     public Response ProcesarPago(DatosPagos request) {
 
 
@@ -101,9 +105,10 @@ public class ComprasController {
 
     @GET
     @Path("/montoActualVendido")
-    @Produces(MediaType.TEXT_PLAIN)
-    public float montoActualVendido(@QueryParam("rut") int rut) {
-        return montoActualVendidoServicio.montoActualVendido(rut);
+    @Produces(MediaType.APPLICATION_JSON)
+    public float montoActualVendido(DatosVD request) {
+        log.info("  EL RUT QUE ME ESTAS PASANDO ES ESTE "+ request.getRut());
+        return montoActualVendidoServicio.montoActualVendido(request.getRut());
     }
 
 
@@ -125,15 +130,12 @@ public class ComprasController {
 
     @GET
     @Path("/montoVendidoEntreFechas")
-    @Produces(MediaType.TEXT_PLAIN)
-    public float montoVendidoEntreFechas(
-            @QueryParam("rut") int rut,
-            @QueryParam("fechaInicio") String fechaInicioStr,
-            @QueryParam("fechaFin") String fechaFinStr) {
+    @Produces(MediaType.APPLICATION_JSON)
+    public float montoVendidoEntreFechas(DatosVD query) {
 
-        LocalDate fechaInicio = LocalDate.parse(fechaInicioStr);
-        LocalDate fechaFin = LocalDate.parse(fechaFinStr);
-        return montoActualVendidoServicio.montoVendidoentreFechas(rut, fechaInicio, fechaFin);
+        LocalDate fechaInicio = query.getFechaInicio();
+        LocalDate fechaFin = query.getFechaFin();
+        return montoActualVendidoServicio.montoVendidoentreFechas(query.getRut(), fechaInicio, fechaFin);
     }
 
 

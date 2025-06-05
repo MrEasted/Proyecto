@@ -2,6 +2,7 @@ package Modulo_Monitoreo.Infraestructura.Persistencia;
 
 import Modulo_Monitoreo.Dominio.Deposito;
 import Modulo_Monitoreo.Dominio.Pago;
+import Modulo_Monitoreo.Dominio.Comercio;
 import Modulo_Monitoreo.Dominio.Reclamos;
 import Modulo_Monitoreo.Dominio.Repositorio.IRepositorioMonitoreo;
 
@@ -18,8 +19,8 @@ public class RepositorioMonitoreo implements IRepositorioMonitoreo {
     EntityManager em;
 
     @Override
-    public void GuardarReclamo(Reclamos reclamo) {
-
+    public void GuardarReclamo(int comercio, Reclamos reclamo) {
+    reclamo.setRutcomercio(comercio);
         em.merge(reclamo);
 
     }

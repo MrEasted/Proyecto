@@ -19,8 +19,6 @@ public class ObserverModuloComercio {
     @Inject
     IRealizarReclamoNotificacion notificacion;
 
-    @Inject
-    IRepositorioMonitoreo repositorioMonitoreo;
 
     private static final Logger log = Logger.getLogger(ObserverModuloComercio.class.getName());
 
@@ -34,17 +32,13 @@ public class ObserverModuloComercio {
 
         // Crear una instancia de Comercio y asignar el RUT
         Comercio comercio = new Comercio();
-        comercio.setRut(event.getRut());
+        comercio.setRut(event.getRutcomercio());
 
         // Asociar el comercio al reclamo
-        reclamo.setComercio(comercio);
-
-        // Guardar el reclamo en el sistema de transferencias
-        repositorioMonitoreo.GuardarReclamo(reclamo);
 
 
-        //TIRAR EVENTO ??? NO HACE NADA
-        notificacion.realizarReclamoNotificacion(comercio, reclamo);
+        //REPOSITORIO GUARDA EL EVENTO
+        notificacion.realizarReclamoNotificacion(comercio.getRut(), reclamo);
 
         log.info("Reclamo almacenado en el sistema de transferencias para el comercio: " + comercio.getRut());
     }

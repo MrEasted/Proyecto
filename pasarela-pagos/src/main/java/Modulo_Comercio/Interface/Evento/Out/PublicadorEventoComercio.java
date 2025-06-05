@@ -42,11 +42,12 @@ public class PublicadorEventoComercio {
     @Inject
     private Event<ReclamoNuevo> ReclamoEvent;
 
-    public void publicarNuevoReclamo(Reclamo reclamo) {
+    public void publicarNuevoReclamo(int rutcomercio, Reclamo reclamo) {
         ReclamoNuevo evento = new ReclamoNuevo(
                 reclamo.getReclamo(),
                 reclamo.getComercio().getRut(),
-                reclamo.getFecha()
+                reclamo.getFecha(),
+                rutcomercio
         );
 
         ReclamoEvent.fire(evento);
