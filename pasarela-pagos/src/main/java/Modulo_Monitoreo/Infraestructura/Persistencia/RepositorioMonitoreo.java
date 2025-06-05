@@ -1,5 +1,7 @@
 package Modulo_Monitoreo.Infraestructura.Persistencia;
 
+import Modulo_Monitoreo.Dominio.Deposito;
+import Modulo_Monitoreo.Dominio.Pago;
 import Modulo_Monitoreo.Dominio.Comercio;
 import Modulo_Monitoreo.Dominio.Reclamos;
 import Modulo_Monitoreo.Dominio.Repositorio.IRepositorioMonitoreo;
@@ -23,8 +25,17 @@ public class RepositorioMonitoreo implements IRepositorioMonitoreo {
 
     }
 
+    @Override
+    public void GuardarDeposito(Deposito deposito) {
 
+        em.merge(deposito);
 
+    }
 
+    @Override
+    public void GuardarPago(Pago pago) {
 
+        em.merge(pago);
+
+    }
 }

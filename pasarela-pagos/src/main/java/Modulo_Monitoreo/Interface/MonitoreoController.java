@@ -1,9 +1,12 @@
 package Modulo_Monitoreo.Interface;
 
+import Modulo_Monitoreo.Aplicacon.IAltaPagoServicio;
+import Modulo_Monitoreo.Aplicacon.IAltaTransferenciaServicio;
 import Modulo_Monitoreo.Interface.DTO.DatosPago;
 import Modulo_Monitoreo.Interface.DTO.DatosTransferencias;
 import Modulo_Transferencias.Interface.Evento.In.ObserverModuloComercio;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
@@ -20,19 +23,30 @@ public class MonitoreoController {
 
     private static final Logger log = Logger.getLogger(String.valueOf(ObserverModuloComercio.class));
 
+    @Inject
+    IAltaPagoServicio altaPagoServicio;
+
+    @Inject
+    IAltaTransferenciaServicio altaTransferenciaServicio;
+
     @POST
     @Path("/Transferencia")
     public Response NotificarDeposito(DatosTransferencias request) {
 
         try {
 
+            //CONTROLES
             log.info("Entre a mi response AltaDeposito y obtengo el rut comercio : " + request.getRutComercio());
-            log.info("Fecha deposito : " + request.getRutComercio());
+            log.info("Fecha deposito : " + request.getFechaDeposito());
             log.info("Importe deposito : " + request.getImporte());
 
-            //FALTA IMPLEMENTAR APLICACION/SERVICIO Y QUE ESE SERVICIO LO GUARDE EN REPOSITORIO
+            //LLAMO SERVICIO
+
+            altaTransferenciaServicio.AltaTransferencia(request.getRutComercio(),request.getFechaDeposito(),request.getImporte());
+
 
             return Response.ok().build();
+
         } catch (RuntimeException e) {
             return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
         }
@@ -57,11 +71,13 @@ public class MonitoreoController {
 
         try {
 
+            //CONTROLES
             log.info("Notificacion del Pago- : Rut: " + request.getIdComercio());
             log.info("Notificacion del Pago- : idCompra: " + request.getIdCompra());
             log.info("Notificacion del Pago- : Notificacion: " + request.getNotificacion());
 
-            //FALTA IMPLEMENTAR APLICACION/SERVICIO Y QUE ESE SERVICIO LO GUARDE EN REPOSITORIO
+            //LLAMO SERVICIO
+            altaPagoServicio.AltaPago(request.getIdComercio(), request.getIdCompra(), request.getNotificacion());
 
 
             return Response.ok().build();

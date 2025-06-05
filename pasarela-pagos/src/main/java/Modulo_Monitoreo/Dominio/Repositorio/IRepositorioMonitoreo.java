@@ -1,11 +1,15 @@
 package Modulo_Monitoreo.Dominio.Repositorio;
 
-import Modulo_Monitoreo.Dominio.Comercio;
-import Modulo_Monitoreo.Dominio.Reclamos;
+import Modulo_Monitoreo.Dominio.*;
 
 public interface IRepositorioMonitoreo {
 
 
+    public void GuardarDeposito(Deposito deposito);
+
+    public void GuardarPago(Pago pago);
+
     public void GuardarReclamo(int  comercio, Reclamos reclamo);
+
 
 }
