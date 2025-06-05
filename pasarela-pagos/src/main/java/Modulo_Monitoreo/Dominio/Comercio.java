@@ -1,10 +1,13 @@
 package Modulo_Monitoreo.Dominio;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.List;
 
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity (name = "Monitoreo_Comercio")
 @Table(name = "monitoreo_comercio")
 public class Comercio {
@@ -17,8 +20,6 @@ public class Comercio {
     private CuentaBancoComercio cuenta;
 
 
-    @OneToMany(mappedBy = "comercio", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Reclamos> reclamos;
 
     private int rut;
     private String password;
@@ -34,7 +35,7 @@ public class Comercio {
     public Comercio(List<Compra> micompra, String password, List<Reclamos> reclamos, int rut, CuentaBancoComercio cuenta) {
         this.micompra = micompra;
         this.password = password;
-        this.reclamos = reclamos;
+      //  this.reclamos = reclamos;
         this.rut = rut;
         this.cuenta = cuenta;
     }
@@ -69,14 +70,6 @@ public class Comercio {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public List<Reclamos> getReclamos() {
-        return reclamos;
-    }
-
-    public void setReclamos(List<Reclamos> reclamos) {
-        this.reclamos = reclamos;
     }
 
     public int getRut() {

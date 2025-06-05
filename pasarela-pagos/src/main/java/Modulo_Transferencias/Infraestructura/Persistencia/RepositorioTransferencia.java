@@ -4,6 +4,7 @@ import Modulo_Transferencias.Dominio.Comercio;
 import Modulo_Transferencias.Dominio.CuentaBancoComercio;
 import Modulo_Transferencias.Dominio.Deposito;
 import Modulo_Transferencias.Dominio.Repositorio.IRepositorioTransferencia;
+import jakarta.ejb.Stateless;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -11,7 +12,7 @@ import jakarta.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
 
-@ApplicationScoped
+@Stateless
 public class RepositorioTransferencia implements IRepositorioTransferencia {
 
     //JPA

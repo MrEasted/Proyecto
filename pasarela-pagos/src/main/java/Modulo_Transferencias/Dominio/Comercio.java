@@ -1,9 +1,12 @@
 package Modulo_Transferencias.Dominio;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.List;
 
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity(name = "Transferencia_Comercio")
 @Table(name = "transferencia_comercio")
 public class Comercio {

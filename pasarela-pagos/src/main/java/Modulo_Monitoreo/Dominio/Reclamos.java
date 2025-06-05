@@ -13,9 +13,7 @@ public class Reclamos {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "monitoreo_comercio_id", referencedColumnName = "id")
-    private Comercio comercio;
+   private int rutcomercio;
 
     private String reclamo;
 
@@ -24,20 +22,13 @@ public class Reclamos {
     public Reclamos() {
     }
 
-    public Reclamos(String reclamo, LocalDate fecha, Comercio comercio) {
-        this.reclamo = reclamo;
+    public Reclamos(LocalDate fecha, long id, String reclamo, int rutcomercio) {
         this.fecha = fecha;
-        this.comercio = comercio;
+        this.id = id;
+        this.reclamo = reclamo;
+        this.rutcomercio = rutcomercio;
     }
 
-
-    public Comercio getComercio() {
-        return comercio;
-    }
-
-    public void setComercio(Comercio comercio) {
-        this.comercio = comercio;
-    }
 
     public LocalDate getFecha() {
         return fecha;
@@ -61,5 +52,13 @@ public class Reclamos {
 
     public void setReclamo(String reclamo) {
         this.reclamo = reclamo;
+    }
+
+    public int getRutcomercio() {
+        return rutcomercio;
+    }
+
+    public void setRutcomercio(int rutcomercio) {
+        this.rutcomercio = rutcomercio;
     }
 }

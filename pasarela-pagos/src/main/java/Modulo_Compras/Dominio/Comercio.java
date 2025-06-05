@@ -1,16 +1,19 @@
 package Modulo_Compras.Dominio;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity(name = "Compra_Comercio")
 @Table(name = "compra_comercio")
 public class Comercio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "compra_comercio_compra")
@@ -55,11 +58,11 @@ public class Comercio {
             this.cuenta = cuenta;
         }
 
-        public long getId() {
+        public int getId() {
             return id;
         }
 
-        public void setId(long id) {
+        public void setId(int id) {
             this.id = id;
         }
 

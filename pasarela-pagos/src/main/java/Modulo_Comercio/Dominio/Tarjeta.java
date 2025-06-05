@@ -1,11 +1,14 @@
 package Modulo_Comercio.Dominio;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity(name = "Comercio_Tarjeta")
 @Table(name = "comercio_tarjeta")
 public class Tarjeta {

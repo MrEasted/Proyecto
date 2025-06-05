@@ -10,7 +10,8 @@ public interface IRepositorioCompras {
     void guardar(Comercio comercio);
     boolean existe(int rut);
     Comercio obtener(int rut);
-
+    boolean existeConConsulta(int rut);
+    Comercio obtenerSiExiste(int rut);
 
     //Tarjetas
     void guardarTarjeta(Tarjeta tarjeta);

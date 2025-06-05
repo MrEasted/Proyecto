@@ -12,6 +12,6 @@ public class ReclamoNuevo {
     private String reclamo;
     private int rut;
     private LocalDate fecha;
-
+    private int rutcomercio;
 
 }

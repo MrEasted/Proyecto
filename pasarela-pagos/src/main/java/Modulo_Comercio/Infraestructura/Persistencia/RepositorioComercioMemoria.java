@@ -3,8 +3,10 @@ package Modulo_Comercio.Infraestructura.Persistencia;
 import Modulo_Comercio.Dominio.Comercio;
 import Modulo_Comercio.Dominio.Reclamo;
 import Modulo_Comercio.Dominio.Repositorio.IRepositorioComercio;
+import jakarta.ejb.Stateless;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 
 import java.time.LocalDate;
@@ -12,7 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-@ApplicationScoped
+@Stateless
 public class RepositorioComercioMemoria implements IRepositorioComercio {
 
     //JPA
@@ -33,10 +35,30 @@ public class RepositorioComercioMemoria implements IRepositorioComercio {
 
     @Override
     public boolean existe(int rut) {
-
-        return em.contains(em.find(Comercio.class, rut));
-
+        return em.find(Comercio.class, rut) != null;
     }
+
+    @Override
+    public boolean existeConConsulta(int rut) {
+        Long count = em.createQuery(
+                        "SELECT COUNT(c) FROM Comercio_Comercio c WHERE c.rut = :rut", Long.class)
+                .setParameter("rut", rut)
+                .getSingleResult();
+        return count > 0;
+    }
+
+    @Override
+    public Comercio obtenerSiExiste(int rut) {
+        try {
+            return em.createQuery(
+                            "SELECT c FROM Comercio_Comercio c WHERE c.rut = :rut", Comercio.class)
+                    .setParameter("rut", rut)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
 
     @Override
     public void actualizar(Comercio comercio) {
@@ -50,20 +72,16 @@ public class RepositorioComercioMemoria implements IRepositorioComercio {
 
 
     @Override
-    public void realizarReclamo(String reclamo, int comercio) {
-        Comercio co = em.find(Comercio.class, comercio);
-        Reclamo recla = new Reclamo();
-        recla.setReclamo(reclamo);
-        recla.setComercio(co);
-        LocalDate fecha = LocalDate.now();
-        recla.setFecha(fecha);
-
+    public void realizarReclamo(Comercio comercio, Reclamo reclamo) {
+        Comercio co = this.obtenerSiExiste(comercio.getRut());
 
         if (co.getReclamos() == null) {
             co.setReclamos(new ArrayList<>());
         }
-        co.getReclamos().add(recla);
+        co.getReclamos().add(reclamo);
         em.merge(co);
     }
+
+
 
 }
