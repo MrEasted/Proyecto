@@ -72,7 +72,7 @@ public class ComercioController {
                 // Lanzar una excepción con el mensaje de que no se recibió la contraseña
                 throw new IllegalArgumentException("No se recibió la contraseña.");
             }
-            servicioComercio.altaComercio(request.getRut(), request.getCompras(), request.getCuenta(), request.getPos(), request.getPassword());
+            servicioComercio.altaComercio(request.getRut(), request.getCompras(), request.getCuenta(), request.getPos(), request.getPassword(), request.getUsuario());
             return Response.status(Response.Status.CREATED).build();
         } catch (IllegalArgumentException e) {
             // Responder con un 400 Bad Request cuando no se recibe la contraseña correctamente
@@ -87,6 +87,8 @@ public class ComercioController {
     BODY:
         {
           "rut": 12345678,
+          "usuario": "pepe",
+          "password": "miPassword123",
           "compras": [
             {
               "id": 1,
@@ -133,8 +135,7 @@ public class ComercioController {
             {
               "id": 2
             }
-          ],
-          "password": "miPassword123"
+          ]
         }
      */
 

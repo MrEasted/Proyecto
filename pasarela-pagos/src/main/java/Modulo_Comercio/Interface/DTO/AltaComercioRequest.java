@@ -12,6 +12,7 @@ public class AltaComercioRequest {
     private CuentaBancoComercio cuenta;
     private List<Pos> pos;
     private String password;
+    private String usuario;
 
     public int getRut() { return rut; }
     public void setRut(int rut) { this.rut = rut; }
@@ -23,4 +24,12 @@ public class AltaComercioRequest {
     public void setPos(List<Pos> pos) { this.pos = pos; }
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
 }

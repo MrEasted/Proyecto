@@ -21,11 +21,12 @@ public class AltaComercioServicio implements IAltaComercioServicio {
     PublicadorEventoComercio publicadorEventoComercio;
 
     @Override
-    public void altaComercio(int rut, List<Compra> compras, CuentaBancoComercio cuenta, List<Pos> pos, String password) {
+    public void altaComercio(int rut, List<Compra> compras, CuentaBancoComercio cuenta, List<Pos> pos, String password, String usuario) {
         if (repositorio.existe(rut)) {
             throw new RuntimeException("El comercio ya existe");
         }
-        Comercio comercio = new Comercio(rut, compras, cuenta, pos, password);
+        Comercio comercio = new Comercio(rut, compras, cuenta, pos, password, usuario);
+
 
         repositorio.guardar(comercio);
         publicadorEventoComercio.publicarNuevoComercio(comercio);
