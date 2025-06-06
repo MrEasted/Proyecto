@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface  IAltaComercioServicio {
 
-    void altaComercio(int rut, List<Compra> compras, CuentaBancoComercio cuenta, List<Pos> pos, String pass);
+    void altaComercio(int rut, List<Compra> compras, CuentaBancoComercio cuenta, List<Pos> pos, String pass, String Usuario);
 
 
 

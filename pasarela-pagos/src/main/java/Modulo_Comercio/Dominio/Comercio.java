@@ -1,5 +1,6 @@
 package Modulo_Comercio.Dominio;
 
+import Modulo_Comercio.Seguridad.HASH;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
@@ -29,13 +30,16 @@ public class Comercio {
 
     private int rut;
     private String password;
+    private String usuario;
 
-    public Comercio(int rut, List<Compra> compras, CuentaBancoComercio cuenta, List<Pos> pos, String password) {
+    public Comercio(int rut, List<Compra> compras, CuentaBancoComercio cuenta, List<Pos> pos, String password, String usuario) {
         this.rut = rut;
         this.cuenta = cuenta;
         this.pos = pos;
-        this.password = password;
+        //CONVERTIMOS EN HASH LA CONTRASEÑA
+        this.password = HASH.convertToHas(password);
         this.reclamos = new ArrayList<>();
+        this.usuario = usuario;
     }
 
     public  Comercio() {}
@@ -70,7 +74,21 @@ public class Comercio {
     public List<Reclamo> getReclamos() {return reclamos;}
     public void setReclamos(List<Reclamo> reclamos) {this.reclamos = reclamos;}
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
 }
 
 
