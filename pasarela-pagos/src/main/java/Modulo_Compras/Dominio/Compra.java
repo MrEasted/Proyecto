@@ -17,6 +17,11 @@ public class Compra {
     @JoinColumn(name = "compra_tarjeta_id")
     private Tarjeta tarjeta;
 
+    @Version
+    int version;
+
+
+
     private int pos;
 
 
@@ -34,6 +39,13 @@ public class Compra {
 
     public Compra() {}
 
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
 
     public String getDescripcion() {
         return descripcion;

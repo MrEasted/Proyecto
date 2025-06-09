@@ -4,6 +4,7 @@ import Modulo_Comercio.Dominio.Reclamo;
 import Modulo_Comercio.Dominio.Repositorio.IRepositorioComercio;
 import Modulo_Comercio.Interface.Evento.Out.PublicadorEventoComercio;
 import Modulo_Monitoreo.Interface.ObserverModuloComercio;
+import io.micrometer.core.instrument.MeterRegistry;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
@@ -18,6 +19,9 @@ public class RealizarReclamo implements IRealizarReclamo {
     @Inject
     IRepositorioComercio repositorio;
 
+
+    @Inject
+    MeterRegistry meterRegistry;
 
     @Inject
     PublicadorEventoComercio publicadorEventoComercio;
@@ -39,6 +43,9 @@ public class RealizarReclamo implements IRealizarReclamo {
           log.info("ENCONTRE PREVIO AL REALIZARECLAMO");
                 repositorio.realizarReclamo(co, recla);
                 publicadorEventoComercio.publicarNuevoReclamo(co.getRut(),recla);
+
+
+            meterRegistry.counter("comercio.reclamos.realizados").increment();
 
         }else{
             throw new RuntimeException("El comercio no existe");

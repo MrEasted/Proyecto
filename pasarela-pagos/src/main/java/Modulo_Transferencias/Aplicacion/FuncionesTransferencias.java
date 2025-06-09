@@ -5,6 +5,7 @@ import Modulo_Transferencias.Dominio.Comercio;
 import Modulo_Transferencias.Dominio.CuentaBancoComercio;
 import Modulo_Transferencias.Dominio.Deposito;
 import Modulo_Transferencias.Dominio.Repositorio.IRepositorioTransferencia;
+import io.micrometer.core.instrument.MeterRegistry;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
@@ -18,6 +19,10 @@ public class FuncionesTransferencias implements IFuncionesTransferencias {
 
     @Inject
     private IRepositorioTransferencia repositorio;
+
+    @Inject
+    MeterRegistry meterRegistry;
+
 
     private static final Logger log = Logger.getLogger(String.valueOf(ObserverModuloComercio.class));
 
@@ -83,6 +88,8 @@ public class FuncionesTransferencias implements IFuncionesTransferencias {
         if(repositorio.existe(rut)){
             if(cuen!=null){
                 repositorio.guardoTransferencia(com, deposito, cuen);
+                // Incrementar el contador de reportes de venta actual
+                meterRegistry.counter("comercio.reportes.deposito_cuenta.realizada").increment();
 
             }
 
