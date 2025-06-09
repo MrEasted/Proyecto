@@ -8,6 +8,7 @@ import Modulo_Compras.Interface.DTO.DatosCompraDTO;
 import Modulo_Compras.Interface.Evento.Out.PublicadorEventoCompra;
 import Modulo_Transferencias.Interface.Evento.In.ObserverModuloComercio;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.micrometer.core.instrument.MeterRegistry;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -30,6 +31,11 @@ public class ProcesarPagoServicio  implements IProcesarPagoServicio {
 
     @Inject
     private IRepositorioCompras repositorio;
+
+
+    @Inject 
+    MeterRegistry meterRegistry;
+
 
     @Inject
     PublicadorEventoCompra publicadorEvento;
@@ -87,8 +93,13 @@ public class ProcesarPagoServicio  implements IProcesarPagoServicio {
                   //Llamo publicador para publicar datos compra y rut del comercio.
                   publicadorEvento.publicarNuevaCompra(compra, rutComercio, t);
 
+                  // Incrementar el contador de reportes de compras aceptadas
+                  meterRegistry.counter("comercio.reportes.pagos_aceptados").increment();
 
               }else {
+
+                  // Incrementar el contador de reportes de compras rechazadas
+                  meterRegistry.counter("comercio.reportes.pagos_rechazados").increment();
                   log.info("COMPRA RECHAZADA");
               }
 
@@ -129,7 +140,7 @@ public class ProcesarPagoServicio  implements IProcesarPagoServicio {
         // Analizar la respuesta
         boolean compraExitosa = Boolean.parseBoolean(response.body());
 
-
+/*target bin wsd consume*/
 
         if (compraExitosa == true) {
 

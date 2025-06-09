@@ -11,6 +11,7 @@ public class Deposito {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    private String referencia;
     private LocalDate fecha;
     private float importe;
 
@@ -20,6 +21,15 @@ public class Deposito {
     }
 
     public Deposito() {
+    }
+
+
+    public String getReferencia() {
+        return referencia;
+    }
+
+    public void setReferencia(String referencia) {
+        this.referencia = referencia;
     }
 
     public long getId() {

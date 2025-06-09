@@ -6,9 +6,7 @@ import Modulo_Compras.Dominio.Repositorio.IRepositorioCompras;
 import Modulo_Compras.Dominio.Tarjeta;
 import jakarta.ejb.Stateless;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.NoResultException;
-import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -104,13 +102,23 @@ public class RepositorioCompras implements IRepositorioCompras {
 
     @Override
     public Comercio obtenerSiExiste(int rut) {
+
+                          String sql =  "SELECT c FROM Compra_Comercio c WHERE c.rut = :rut";
+
+            TypedQuery<Comercio> query = em.createQuery(sql, Comercio.class).setParameter("rut", rut);
+
+
+            query.setLockMode(LockModeType.PESSIMISTIC_WRITE);
         try {
-            return em.createQuery(
-                            "SELECT c FROM Compra_Comercio c WHERE c.rut = :rut", Comercio.class)
-                    .setParameter("rut", rut)
-                    .getSingleResult();
+    return query.getSingleResult();
         } catch (NoResultException e) {
             return null;
         }
     }
+
+
+
+
+
+
 }
