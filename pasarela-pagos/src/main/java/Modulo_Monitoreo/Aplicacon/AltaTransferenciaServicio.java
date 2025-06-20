@@ -2,6 +2,7 @@ package Modulo_Monitoreo.Aplicacon;
 
 import Modulo_Monitoreo.Dominio.Deposito;
 import Modulo_Monitoreo.Dominio.Repositorio.IRepositorioMonitoreo;
+import io.micrometer.core.instrument.MeterRegistry;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
@@ -12,6 +13,10 @@ public class AltaTransferenciaServicio implements IAltaTransferenciaServicio{
 
     @Inject
     IRepositorioMonitoreo repositorioMonitoreo;
+
+    @Inject
+    MeterRegistry meterRegistry;
+
 
     @Override
     public void AltaTransferencia(int rut, LocalDate fechaDeposito, float importe) {
@@ -24,6 +29,9 @@ public class AltaTransferenciaServicio implements IAltaTransferenciaServicio{
         d.setRutComercio(rut);
 
         repositorioMonitoreo.GuardarDeposito(d);
+
+        // Incrementar el contador de reportes de venta actual
+        meterRegistry.counter("comercio.reportes.deposito_cuenta.realizada").increment();
 
 
     }

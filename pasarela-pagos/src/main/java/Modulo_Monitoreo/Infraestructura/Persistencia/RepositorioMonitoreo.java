@@ -1,15 +1,14 @@
 package Modulo_Monitoreo.Infraestructura.Persistencia;
 
-import Modulo_Monitoreo.Dominio.Deposito;
-import Modulo_Monitoreo.Dominio.Pago;
-import Modulo_Monitoreo.Dominio.Comercio;
-import Modulo_Monitoreo.Dominio.Reclamos;
+import Modulo_Monitoreo.Dominio.*;
 import Modulo_Monitoreo.Dominio.Repositorio.IRepositorioMonitoreo;
 
 import jakarta.ejb.Stateless;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+
+import java.time.LocalDate;
 
 @Stateless
 public class RepositorioMonitoreo implements IRepositorioMonitoreo {
@@ -38,4 +37,27 @@ public class RepositorioMonitoreo implements IRepositorioMonitoreo {
         em.merge(pago);
 
     }
+
+    @Override
+    public void GuardoReportedeldia(int rut){
+        LocalDate fechahoy = LocalDate.now();
+        Reportes re = new Reportes(null, fechahoy, rut);
+        em.merge(re);
+
+    }
+
+    @Override
+    public void GuardoReporteentreFechas(int rut, LocalDate fechainicio, LocalDate fechafin){
+        Reportes re = new Reportes(fechainicio, fechafin, rut);
+        em.merge(re);
+
+
+
+
+
+
+    }
+
+
+
 }

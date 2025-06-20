@@ -20,8 +20,6 @@ public class RealizarReclamo implements IRealizarReclamo {
     IRepositorioComercio repositorio;
 
 
-    @Inject
-    MeterRegistry meterRegistry;
 
     @Inject
     PublicadorEventoComercio publicadorEventoComercio;
@@ -45,7 +43,6 @@ public class RealizarReclamo implements IRealizarReclamo {
                 publicadorEventoComercio.publicarNuevoReclamo(co.getRut(),recla);
 
 
-            meterRegistry.counter("comercio.reclamos.realizados").increment();
 
         }else{
             throw new RuntimeException("El comercio no existe");
