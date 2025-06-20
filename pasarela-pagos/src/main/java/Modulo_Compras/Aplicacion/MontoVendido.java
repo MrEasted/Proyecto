@@ -1,6 +1,7 @@
 package Modulo_Compras.Aplicacion;
 
 import Modulo_Compras.Dominio.Repositorio.IRepositorioCompras;
+import Modulo_Compras.Interface.Evento.Out.PublicadorReporteVentas;
 import io.micrometer.core.instrument.MeterRegistry;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -12,11 +13,13 @@ public class MontoVendido implements IMontoVendido {
 
 
 
-    @Inject
-    MeterRegistry meterRegistry;
 
     @Inject
     IRepositorioCompras repositorioCompras;
+
+    @Inject
+    PublicadorReporteVentas notificacion;
+
 
     public float montoActualVendido(int rutcomercio) {
         if (repositorioCompras.existeConConsulta(rutcomercio)) {
@@ -24,10 +27,9 @@ public class MontoVendido implements IMontoVendido {
 
             if (res == 0) {
                 throw new RuntimeException("No hay compras el dia de hoy");
-            } else{
-                // Incrementar el contador de reportes de venta actual
-                meterRegistry.counter("comercio.reportes.venta_actual.solicitados").increment();
 
+            } else{
+                notificacion.PublicarNuevoReporteVentas(rutcomercio,null,null);
                 return res;
             }
 
@@ -41,8 +43,7 @@ public class MontoVendido implements IMontoVendido {
         if (res == 0){
             throw new RuntimeException("No hay compras en ese periodo");
         }else
-            // Incrementar el contador de reportes entre fechas
-            meterRegistry.counter("comercio.reportes.venta_periodo.solicitados").increment();
+            notificacion.PublicarNuevoReporteVentas(rutcomercio,fechaInicio,fechaFin);
            return res;
        }
         throw new RuntimeException("El comercio no existe");

@@ -4,6 +4,7 @@ package Modulo_Monitoreo.Aplicacon;
 import Modulo_Monitoreo.Dominio.Pago;
 import Modulo_Monitoreo.Dominio.PagoId;
 import Modulo_Monitoreo.Dominio.Repositorio.IRepositorioMonitoreo;
+import io.micrometer.core.instrument.MeterRegistry;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
@@ -12,6 +13,11 @@ public class AltaPagoServicio implements IAltaPagoServicio{
 
     @Inject
     IRepositorioMonitoreo repositorioMonitoreo;
+
+    @Inject
+    MeterRegistry meterRegistry;
+
+
 
     @Override
     public void AltaPago(int rut, int idCompra, String notificacion) {
@@ -30,6 +36,10 @@ public class AltaPagoServicio implements IAltaPagoServicio{
 
         //lo guardo en el respositorio
         repositorioMonitoreo.GuardarPago(pago);
+
+        // Incrementar el contador de reportes de venta actual
+        meterRegistry.counter("comercio.reportes.Pagos_realizados.solicitado").increment();
+
 
 
 

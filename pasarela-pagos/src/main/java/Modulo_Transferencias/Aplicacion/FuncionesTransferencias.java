@@ -20,8 +20,6 @@ public class FuncionesTransferencias implements IFuncionesTransferencias {
     @Inject
     private IRepositorioTransferencia repositorio;
 
-    @Inject
-    MeterRegistry meterRegistry;
 
 
     private static final Logger log = Logger.getLogger(String.valueOf(ObserverModuloComercio.class));
@@ -88,8 +86,6 @@ public class FuncionesTransferencias implements IFuncionesTransferencias {
         if(repositorio.existe(rut)){
             if(cuen!=null){
                 repositorio.guardoTransferencia(com, deposito, cuen);
-                // Incrementar el contador de reportes de venta actual
-                meterRegistry.counter("comercio.reportes.deposito_cuenta.realizada").increment();
 
             }
 
