@@ -16,5 +16,6 @@ public interface IRepositorioMonitoreo {
     public void GuardoReportedeldia(int rut);
     public void GuardoReporteentreFechas(int rut, LocalDate fechainicio,LocalDate fechafin);
 
+    public void ActualizoReclamo(int id, String categoria);
 
 }

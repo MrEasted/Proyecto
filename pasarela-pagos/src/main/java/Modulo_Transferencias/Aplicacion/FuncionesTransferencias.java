@@ -7,6 +7,7 @@ import Modulo_Transferencias.Dominio.Deposito;
 import Modulo_Transferencias.Dominio.Repositorio.IRepositorioTransferencia;
 import Modulo_Transferencias.soap.Resultado;
 import io.micrometer.core.instrument.MeterRegistry;
+
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
@@ -77,14 +78,18 @@ public class FuncionesTransferencias implements IFuncionesTransferencias {
 
     }
 
+
+
+
+
     @Override
     public void CreoTransfererencia(int rut, int importe) {
         if (!repositorio.existe(rut)) {
             throw new RuntimeException("El comercio no existe");
-        }
+
 
         Comercio com = repositorio.obtener(rut);
-        CuentaBancoComercio cuen = com.getCuenta();
+        CuentaBancoComercio cuen = repositorio.cuentadebancocomercio(rut);
 
         if (cuen == null) {
             throw new RuntimeException("El comercio no tiene cuenta bancaria asociada");
@@ -92,20 +97,15 @@ public class FuncionesTransferencias implements IFuncionesTransferencias {
 
         LocalDate fecha = LocalDate.now();
         Deposito deposito = new Deposito(fecha, importe);
-
+        System.out.println("LLEGUE PUTA");
         // bd
         repositorio.guardoTransferencia(com, deposito, cuen);
-
+        System.out.println("LLEGUE PUTA2");
         // soap
         try {
             BancoSOAPService service = new BancoSOAPService();
             BancoSOAP soap = service.getBancoSOAPPort();
             Resultado resultado = soap.procesarTransferencia(String.valueOf(rut), importe);
-        if(repositorio.existe(rut)){
-            if(cuen!=null){
-                repositorio.guardoTransferencia(com, deposito, cuen);
-
-            }
 
             System.out.println("Transferencia confirmada por el banco. Resultado: " + resultado.getReferencia());
         } catch (Exception e) {
@@ -113,7 +113,6 @@ public class FuncionesTransferencias implements IFuncionesTransferencias {
             e.printStackTrace();
         }
     }
-
 
 
 
