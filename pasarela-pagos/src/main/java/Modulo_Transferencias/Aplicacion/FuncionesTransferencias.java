@@ -6,12 +6,15 @@ import Modulo_Transferencias.Dominio.CuentaBancoComercio;
 import Modulo_Transferencias.Dominio.Deposito;
 import Modulo_Transferencias.Dominio.Repositorio.IRepositorioTransferencia;
 import Modulo_Transferencias.soap.Resultado;
+import io.micrometer.core.instrument.MeterRegistry;
+
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.logging.Logger;
 
 import Modulo_Transferencias.soap.BancoSOAP;
@@ -83,7 +86,7 @@ public class FuncionesTransferencias implements IFuncionesTransferencias {
     public void CreoTransfererencia(int rut, int importe) {
         if (!repositorio.existe(rut)) {
             throw new RuntimeException("El comercio no existe");
-        }
+
 
         Comercio com = repositorio.obtener(rut);
         CuentaBancoComercio cuen = repositorio.cuentadebancocomercio(rut);
@@ -110,6 +113,7 @@ public class FuncionesTransferencias implements IFuncionesTransferencias {
             e.printStackTrace();
         }
     }
+
 
 
 
