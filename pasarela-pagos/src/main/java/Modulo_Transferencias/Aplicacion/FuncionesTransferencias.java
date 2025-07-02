@@ -26,8 +26,6 @@ public class FuncionesTransferencias implements IFuncionesTransferencias {
     @Inject
     private IRepositorioTransferencia repositorio;
 
-    @Inject
-    MeterRegistry meterRegistry;
 
 
     private static final Logger log = Logger.getLogger(String.valueOf(ObserverModuloComercio.class));
@@ -103,6 +101,11 @@ public class FuncionesTransferencias implements IFuncionesTransferencias {
             BancoSOAPService service = new BancoSOAPService();
             BancoSOAP soap = service.getBancoSOAPPort();
             Resultado resultado = soap.procesarTransferencia(String.valueOf(rut), importe);
+        if(repositorio.existe(rut)){
+            if(cuen!=null){
+                repositorio.guardoTransferencia(com, deposito, cuen);
+
+            }
 
             System.out.println("Transferencia confirmada por el banco. Resultado: " + resultado.getReferencia());
         } catch (Exception e) {

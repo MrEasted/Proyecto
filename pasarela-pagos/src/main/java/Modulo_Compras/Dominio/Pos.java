@@ -22,6 +22,7 @@ public class Pos {
     public Pos(){}
 
     public Pos(Integer integer) {
+        this.id = integer;
     }
 
     public int getId() { return id; }

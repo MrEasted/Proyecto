@@ -33,8 +33,6 @@ public class ProcesarPagoServicio  implements IProcesarPagoServicio {
     private IRepositorioCompras repositorio;
 
 
-    @Inject 
-    MeterRegistry meterRegistry;
 
 
     @Inject
@@ -93,13 +91,9 @@ public class ProcesarPagoServicio  implements IProcesarPagoServicio {
                   //Llamo publicador para publicar datos compra y rut del comercio.
                   publicadorEvento.publicarNuevaCompra(compra, rutComercio, t);
 
-                  // Incrementar el contador de reportes de compras aceptadas
-                  meterRegistry.counter("comercio.reportes.pagos_aceptados").increment();
 
               }else {
 
-                  // Incrementar el contador de reportes de compras rechazadas
-                  meterRegistry.counter("comercio.reportes.pagos_rechazados").increment();
                   log.info("COMPRA RECHAZADA");
               }
 

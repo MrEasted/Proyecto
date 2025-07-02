@@ -22,6 +22,7 @@
         public Pos(){}
 
         public Pos(int i) {
+            this.id = i;
         }
 
         public int getId() { return id; }
