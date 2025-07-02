@@ -19,6 +19,9 @@ public class Reclamos {
 
     private LocalDate fecha;
 
+
+    private String Clificacion;
+
     public Reclamos() {
     }
 
@@ -29,6 +32,13 @@ public class Reclamos {
         this.rutcomercio = rutcomercio;
     }
 
+    public String getClificacion() {
+        return Clificacion;
+    }
+
+    public void setClificacion(String clificacion) {
+        Clificacion = clificacion;
+    }
 
     public LocalDate getFecha() {
         return fecha;

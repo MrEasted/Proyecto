@@ -11,4 +11,5 @@ public interface IRepositorioTransferencia {
     boolean existe(int rut);
     Comercio obtener(int rut);
     void guardoTransferencia(Comercio comercio, Deposito dep, CuentaBancoComercio cuenta);
+    CuentaBancoComercio cuentadebancocomercio(int rut);
 }

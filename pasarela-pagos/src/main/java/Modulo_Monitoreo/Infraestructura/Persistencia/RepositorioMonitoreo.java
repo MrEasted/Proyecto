@@ -1,5 +1,6 @@
 package Modulo_Monitoreo.Infraestructura.Persistencia;
 
+import Modulo_Comercio.Dominio.Reclamo;
 import Modulo_Monitoreo.Dominio.*;
 import Modulo_Monitoreo.Dominio.Repositorio.IRepositorioMonitoreo;
 
@@ -23,6 +24,24 @@ public class RepositorioMonitoreo implements IRepositorioMonitoreo {
         em.merge(reclamo);
 
     }
+
+    @Override
+    public void ActualizoReclamo(int id, String categoria){
+
+        System.out.println("ACTUALIZADO");
+
+        System.out.println("el id: "+ id);
+
+        System.out.println("LA CATEGORIA: "+categoria);
+
+        Reclamos r = em.find(Reclamos.class, Long.valueOf(id));
+
+        r.setClificacion(categoria);
+
+        em.merge(r);
+
+    }
+
 
     @Override
     public void GuardarDeposito(Deposito deposito) {
